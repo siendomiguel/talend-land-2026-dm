@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earnings Report · After Close · 9 Apr 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f4f0;
+  --bg2: #eeecea;
+  --bg3: #e7e5e1;
+  --surface: #ffffff;
+  --ink: #111110;
+  --ink2: #3d3d3c;
+  --ink3: #7a7975;
+  --ink4: #b0aea9;
+  --border: rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.14);
+  --green: #1a6e3c;
+  --green-bg: #edf7f2;
+  --green-mid: #28a05a;
+  --red: #c0291a;
+  --red-bg: #fdf0ee;
+  --red-mid: #e03b28;
+  --amber: #9a5c00;
+  --amber-bg: #fef6e7;
+  --amber-mid: #d97706;
+  --blue: #1a3a7e;
+  --blue-bg: #eff4fd;
+  --neutral-bg: #f0efeb;
+  --mono: 'Geist Mono', monospace;
+  --serif: 'Instrument Serif', serif;
+  --sans: 'Geist', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TICKER TAPE ── */
+.tape-wrap {
+  background: var(--ink);
+  overflow: hidden;
+  padding: 7px 0;
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+.tape-inner {
+  display: flex;
+  gap: 0;
+  animation: tape 35s linear infinite;
+  white-space: nowrap;
+}
+@keyframes tape { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tape-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 24px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .03em;
+  flex-shrink: 0;
+}
+.t-sym { color: rgba(255,255,255,0.4); }
+.t-val { color: rgba(255,255,255,0.85); }
+.t-up { color: #4ade80; }
+.t-dn { color: #f87171; }
+.t-fl { color: rgba(255,255,255,0.5); }
+
+/* ── HEADER ── */
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border2);
+  padding: 28px 48px 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+.header-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: var(--ink3);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.header-title {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.5px;
+  color: var(--ink);
+}
+.header-title em { font-style: italic; color: var(--ink3); }
+.header-sub {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--ink3);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-sub span { display: flex; align-items: center; gap: 5px; }
+.live-dot {
+  width: 5px; height: 5px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: blink 1.8s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+.header-stats {
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+}
+.hstat { text-align: right; }
+.hstat-val {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+}
+.hstat-val.up { color: var(--green); }
+.hstat-val.dn { color: var(--red); }
+.hstat-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink4);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ── MACRO RIBBON ── */
+.macro {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 48px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.macro-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: var(--ink4);
+  text-transform: uppercase;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  border: 1px solid;
+  flex-shrink: 0;
+  letter-spacing: .01em;
+}
+.c-red   { background: var(--red-bg);   border-color: rgba(192,41,26,.18);  color: var(--red); }
+.c-amber { background: var(--amber-bg); border-color: rgba(154,92,0,.18);   color: var(--amber); }
+.c-blue  { background: var(--blue-bg);  border-color: rgba(26,58,126,.15);  color: var(--blue); }
+.c-green { background: var(--green-bg); border-color: rgba(26,110,60,.15);  color: var(--green); }
+.c-neu   { background: var(--neutral-bg);border-color: var(--border);       color: var(--ink3); }
+
+/* ── LAYOUT ── */
+.body-wrap {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  min-height: calc(100vh - 200px);
+}
+.feed { padding: 32px 48px; border-right: 1px solid var(--border); }
+.aside { padding: 24px 24px; }
+
+/* ── SECTION HEAD ── */
+.sec-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.sec-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-title::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 10px;
+  background: var(--ink);
+  border-radius: 1px;
+}
+.sec-count {
+  font-family: var(--mono);
+  font-size: 9px;
+  background: var(--bg3);
+  color: var(--ink3);
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+/* ── EARNINGS CARD ── */
+.ecard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow .15s, border-color .15s;
+  cursor: default;
+  animation: rise .35s ease both;
+}
+.ecard:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+  border-color: var(--border2);
+}
+@keyframes rise {
+  from { opacity:0; transform: translateY(6px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.ecard:nth-child(1){ animation-delay:.04s }
+.ecard:nth-child(2){ animation-delay:.08s }
+.ecard:nth-child(3){ animation-delay:.12s }
+.ecard:nth-child(4){ animation-delay:.16s }
+.ecard:nth-child(5){ animation-delay:.20s }
+.ecard:nth-child(6){ animation-delay:.24s }
+.ecard:nth-child(7){ animation-delay:.28s }
+.ecard:nth-child(8){ animation-delay:.32s }
+.ecard:nth-child(9){ animation-delay:.36s }
+
+.ecard.beat  { border-left: 3px solid var(--green-mid); }
+.ecard.miss  { border-left: 3px solid var(--red-mid);   }
+.ecard.mixed { border-left: 3px solid var(--amber-mid); }
+.ecard.pend  { border-left: 3px solid var(--ink4);      }
+.ecard.avoid { border-left: 3px solid #d0cec9; opacity:.75; }
+
+/* CARD HEAD */
+.ch {
+  padding: 14px 16px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.ch-left { display: flex; align-items: flex-start; gap: 12px; }
+.ticker-block {}
+.ticker-sym {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.5px;
+  line-height: 1;
+  color: var(--ink);
+}
+.ticker-name {
+  font-size: 11px;
+  color: var(--ink3);
+  font-weight: 300;
+  margin-top: 2px;
+}
+.ticker-meta {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink4);
+  letter-spacing: .04em;
+  margin-top: 2px;
+}
+.ch-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1px solid;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.b-beat  { background: var(--green-bg); border-color: rgba(26,110,60,.2); color: var(--green); }
+.b-miss  { background: var(--red-bg);   border-color: rgba(192,41,26,.2); color: var(--red); }
+.b-amber { background: var(--amber-bg); border-color: rgba(154,92,0,.2);  color: var(--amber); }
+.b-neu   { background: var(--neutral-bg);border-color: var(--border);     color: var(--ink3); }
+.b-blue  { background: var(--blue-bg);  border-color: rgba(26,58,126,.18);color: var(--blue); }
+.b-rlow  { background: var(--green-bg); border-color: rgba(26,110,60,.2); color: var(--green); }
+.b-rmed  { background: var(--amber-bg); border-color: rgba(154,92,0,.2);  color: var(--amber); }
+.b-rhi   { background: var(--red-bg);   border-color: rgba(192,41,26,.2); color: var(--red); }
+
+/* METRICS ROW */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.m-cell {
+  padding: 8px 14px;
+  border-right: 1px solid var(--border);
+}
+.m-cell:last-child { border-right: none; }
+.m-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.m-val {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.up { color: var(--green); }
+.dn { color: var(--red); }
+.am { color: var(--amber); }
+.nu { color: var(--ink3); }
+.delta { font-size: 10px; margin-left: 3px; }
+
+/* CARD BODY */
+.cb {
+  padding: 10px 16px 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: start;
+  background: var(--bg);
+}
+.cb-left {}
+.info-line {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--ink3);
+  margin-bottom: 5px;
+}
+.info-line strong { color: var(--ink2); font-weight: 500; }
+.sent-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink4);
+}
+.sent-pips { display: flex; gap: 3px; }
+.pip {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+
+/* STRATEGY */
+.strat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 12px;
+  min-width: 210px;
+  max-width: 240px;
+}
+.strat-type {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink4);
+  margin-bottom: 2px;
+}
+.strat-move {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.strat-desc {
+  font-size: 10px;
+  color: var(--ink3);
+  line-height: 1.45;
+  font-weight: 300;
+}
+
+/* ── ASIDE ── */
+.aside-block { margin-bottom: 28px; }
+.aside-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink4);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* RANKING */
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+.rank-row:last-child { border-bottom: none; }
+.rn {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink4);
+  width: 16px;
+  flex-shrink: 0;
+}
+.rt {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  width: 48px;
+  flex-shrink: 0;
+}
+.rs {
+  flex: 1;
+  font-size: 10px;
+  color: var(--ink3);
+  font-weight: 300;
+  line-height: 1.3;
+}
+.rm {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-align: right;
+  flex-shrink: 0;
+}
+.stars { color: #d97706; font-size: 9px; display: block; margin-top: 1px; }
+
+/* METER */
+.meter { margin-bottom: 10px; }
+.meter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.meter-name {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
+}
+.meter-val {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+.mtrack {
+  height: 3px;
+  background: var(--bg3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.mfill { height: 100%; border-radius: 2px; }
+.meter-sub {
+  font-size: 9px;
+  color: var(--ink4);
+  margin-top: 3px;
+  font-weight: 300;
+}
+
+/* RISK */
+.risk-item {
+  display: flex;
+  gap: 9px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.risk-item:last-child { border-bottom: none; }
+.ri-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.ri-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink2);
+  margin-bottom: 1px;
+  display: block;
+}
+.ri-text {
+  font-size: 10px;
+  color: var(--ink3);
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+/* DIVIDER */
+hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+/* FOOTER */
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 14px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-warn {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink4);
+  letter-spacing: .03em;
+}
+.footer-sources {
+  display: flex;
+  gap: 8px;
+}
+.fsrc {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink4);
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  letter-spacing: .04em;
+}
+
+/* RESPONSIVE */
+@media(max-width:960px) {
+  .header { padding: 20px 24px; }
+  .header-stats { display: none; }
+  .macro { padding: 10px 24px; }
+  .body-wrap { grid-template-columns: 1fr; }
+  .feed { padding: 24px; border-right: none; border-bottom: 1px solid var(--border); }
+  .aside { padding: 20px 24px; }
+  .footer { padding: 12px 24px; }
+  .metrics { grid-template-columns: repeat(2,1fr); }
+  .cb { grid-template-columns: 1fr; }
+  .strat { max-width: 100%; min-width: unset; }
+}
+@media(max-width:600px) {
+  .header-title { font-size: 28px; }
+  .metrics { grid-template-columns: repeat(2,1fr); }
+  .ch { flex-direction: column; gap: 8px; }
+  .ch-right { justify-content: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER TAPE -->
+<div class="tape-wrap">
+  <div class="tape-inner" id="tape"></div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div>
+    <div class="header-eyebrow">Reporte Diario de Earnings — After Close</div>
+    <h1 class="header-title">Jueves 9 de Abril<br><em>2026</em></h1>
+    <div class="header-sub">
+      <span><div class="live-dot"></div> Mercado cerrando</span>
+      <span>9 empresas · Q1 2026</span>
+      <span>Tregua EE.UU–Irán frágil · CPI mañana</span>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="hstat">
+      <div class="hstat-val dn">6,564</div>
+      <div class="hstat-lbl">S&amp;P 500 −0.72%</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val dn">$97.20</div>
+      <div class="hstat-lbl">WTI +6.1%</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val am">26.63</div>
+      <div class="hstat-lbl">VIX +10.2%</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val">4.36%</div>
+      <div class="hstat-lbl">10Y Yield</div>
+    </div>
+  </div>
+</header>
+
+<!-- MACRO RIBBON -->
+<div class="macro">
+  <span class="macro-lbl">Macro ·</span>
+  <span class="chip c-red">🛢 WTI +6% · Hormuz bloqueado</span>
+  <span class="chip c-red">Tregua Irán frágil · Parlamento rechaza</span>
+  <span class="chip c-amber">CPI Marzo mañana · consenso +3.70% YoY</span>
+  <span class="chip c-amber">Fed sin corte · PCE core 3.0%</span>
+  <span class="chip c-blue">Israel–Líbano acepta diálogo directo</span>
+  <span class="chip c-neu">DXY −1.2% semanal · Islamabad talks Sáb.</span>
+</div>
+
+<!-- BODY -->
+<div class="body-wrap">
+<div class="feed">
+  <div class="sec-head">
+    <div class="sec-title">Empresas reportando hoy</div>
+    <span class="sec-count">9 tickers</span>
+  </div>
+
+  <!-- ── BB ── -->
+  <div class="ecard beat" style="position:relative">
+    <div style="position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;background:var(--amber-bg);border:1px solid rgba(154,92,0,.2);color:var(--amber);padding:2px 7px;border-radius:2px;z-index:1">TOP PICK</div>
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">BB</div>
+          <div class="ticker-name">BlackBerry Limited</div>
+          <div class="ticker-meta">NYSE · Cybersecurity / Embedded SW · Pre-open</div>
+        </div>
+      </div>
+      <div class="ch-right" style="margin-right:64px">
+        <span class="badge b-beat">EPS Beat +20%</span>
+        <span class="badge b-beat">Rev Beat +8%</span>
+        <span class="badge b-rlow">Riesgo Bajo</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell">
+        <div class="m-lbl">EPS Est → Real</div>
+        <div class="m-val">$0.05 → <span class="up">$0.06</span><span class="delta up">+20%</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">Revenue Est → Real</div>
+        <div class="m-val">$144M → <span class="up">$156M</span><span class="delta up">+8%</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">Q anterior (Q3)</div>
+        <div class="m-val">EPS $0.05<span class="delta up">beat +67%</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">QNX — Récord</div>
+        <div class="m-val"><span class="up">$78.7M</span><span class="delta up">+20% YoY</span></div>
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line">
+          <span>8 trimestres consecutivos de beat</span>
+          <span>Guía FY2027 Rev: <strong>$584–611M ↑</strong></span>
+          <span>BMW Neue Klasse QNX deal · Canada gov contract</span>
+        </div>
+        <div class="sent-row">
+          Sentimiento
+          <div class="sent-pips">
+            <div class="pip" style="background:var(--green-mid)"></div>
+            <div class="pip" style="background:var(--green-mid)"></div>
+            <div class="pip" style="background:var(--green-mid)"></div>
+            <div class="pip" style="background:var(--green-mid)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+          </div>
+          <span class="up">Alcista — X · Reddit · StockTwits</span>
+        </div>
+      </div>
+      <div class="strat">
+        <div class="strat-type">Estrategia · Opciones</div>
+        <div class="strat-move up">Bull Call Spread</div>
+        <div class="strat-desc">$4.50 / $5.50 · vto 2–4 sem · Mov. +5–12% / 24–72h · QNX record + guidance beat justifican sesgo alcista con riesgo limitado al debit pagado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SMPL ── -->
+  <div class="ecard miss">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">SMPL</div>
+          <div class="ticker-name">Simply Good Foods Co.</div>
+          <div class="ticker-meta">NASDAQ · Nutritional Snacking · Pre-open</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-beat">EPS Beat +13.6%</span>
+        <span class="badge b-miss">Rev Miss −5.2%</span>
+        <span class="badge b-miss">Guidance Cortado</span>
+        <span class="badge b-rhi">Riesgo Alto</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell">
+        <div class="m-lbl">EPS Est → Real</div>
+        <div class="m-val">$0.40 → <span class="up">$0.45</span><span class="delta up">+13.6%</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">Revenue Est → Real</div>
+        <div class="m-val">$343.8M → <span class="dn">$326M</span><span class="delta dn">−5.2%</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">FY Guidance Rev</div>
+        <div class="m-val"><span class="dn">$1.33B</span><span class="delta dn">vs $1.44B est</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">Impairment Non-cash</div>
+        <div class="m-val"><span class="dn">$249M</span><span class="delta nu">Atkins+OWYN</span></div>
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line">
+          <span>Atkins YoY: <strong class="dn">−21.6%</strong></span>
+          <span>OWYN YoY: <strong class="dn">−10.2%</strong></span>
+          <span>Quest: <strong class="up">+4.7%</strong> (único positivo)</span>
+          <span>AH: <strong class="dn">ya −12.1%</strong></span>
+        </div>
+        <div class="sent-row">
+          Sentimiento
+          <div class="sent-pips">
+            <div class="pip" style="background:var(--red-mid)"></div>
+            <div class="pip" style="background:var(--red-mid)"></div>
+            <div class="pip" style="background:var(--red-mid)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+          </div>
+          <span class="dn">Bajista — CEO: "no satisfechos con el resultado"</span>
+        </div>
+      </div>
+      <div class="strat" style="border-color:rgba(192,41,26,.15)">
+        <div class="strat-type">Estrategia · Opciones</div>
+        <div class="strat-move dn">Bear Put Spread</div>
+        <div class="strat-desc">$12 / $10 puts · vto 1–2 sem · Mov. −10–15% / 24–72h · Revenue miss + guidance cortado + impairment masivo = momentum bajista sostenido</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BYRN ── -->
+  <div class="ecard mixed">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">BYRN</div>
+          <div class="ticker-name">Byrna Technologies Inc.</div>
+          <div class="ticker-meta">NASDAQ · Less-Lethal Defense Tech · Pre-open</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-beat">Rev Beat +11% YoY</span>
+        <span class="badge b-neu">EPS ~Est</span>
+        <span class="badge b-rmed">Riesgo Medio</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell">
+        <div class="m-lbl">EPS Est → Real</div>
+        <div class="m-val">$0.05 → <span class="nu">~$0.05</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">Revenue Real</div>
+        <div class="m-val"><span class="up">$29.0M</span><span class="delta up">+11% YoY</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">Gross Margin</div>
+        <div class="m-val">60%<span class="delta dn">−1pp</span></div>
+      </div>
+      <div class="m-cell">
+        <div class="m-lbl">Store Footprint 2026</div>
+        <div class="m-val">1,500 → <span class="up">2,000</span></div>
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line">
+          <span>Academy Sports rollout: <strong>~200 stores Q2</strong></span>
+          <span>Bass Pro + Big-box expansion</span>
+          <span>Marzo YoY tiendas propias: <strong class="up">+16%</strong></span>
+        </div>
+        <div class="sent-row">
+          Sentimiento
+          <div class="sent-pips">
+            <div class="pip" style="background:var(--green-mid)"></div>
+            <div class="pip" style="background:var(--green-mid)"></div>
+            <div class="pip" style="background:var(--amber-mid)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+          </div>
+          <span class="am">Mixto/Alcista — expansión retail positiva</span>
+        </div>
+      </div>
+      <div class="strat">
+        <div class="strat-type">Estrategia · Opciones</div>
+        <div class="strat-move up">Long Call OTM</div>
+        <div class="strat-desc">Delta ~0.35 · vto 2 sem · Mov. +3–7% / 24–72h · Revenue beat + expansión tiendas = catalizador alcista moderado; volumen bajo limita spreads</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NEOG ── -->
+  <div class="ecard mixed">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">NEOG</div>
+          <div class="ticker-name">Neogen Corporation</div>
+          <div class="ticker-meta">NASDAQ · Food &amp; Animal Safety · Confirmado</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-amber">Resultado Mixto</span>
+        <span class="badge b-rmed">Riesgo Medio</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell"><div class="m-lbl">EPS Est</div><div class="m-val">$0.04</div></div>
+      <div class="m-cell"><div class="m-lbl">Revenue Est</div><div class="m-val">$204.5M</div></div>
+      <div class="m-cell"><div class="m-lbl">Food Safety Core</div><div class="m-val"><span class="up">+4.0%</span> ✓</div></div>
+      <div class="m-cell"><div class="m-lbl">Animal Safety Core</div><div class="m-val"><span class="dn">−8.7%</span> ✗</div></div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line">
+          <span>EBITDA Margin: <strong>22.8% ↑ cost control</strong></span>
+          <span>Genomics divest: <strong>Q2 FY2027</strong></span>
+          <span>Suez disruptions: <strong class="dn">freight +HSD–LDD%</strong></span>
+        </div>
+        <div class="sent-row">
+          Sentimiento
+          <div class="sent-pips">
+            <div class="pip" style="background:var(--red-mid)"></div>
+            <div class="pip" style="background:var(--amber-mid)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+          </div>
+          <span class="nu">Bajista/Neutral — sin catalizador claro</span>
+        </div>
+      </div>
+      <div class="strat" style="border-color:rgba(154,92,0,.15)">
+        <div class="strat-type">Estrategia · Opciones</div>
+        <div class="strat-move am">Iron Condor</div>
+        <div class="strat-desc">Ajustado al rango · Mov. ±3–5% / 24–72h · Resultado mixto sin catalizador = rango acotado; captura theta aprovechando IV post-earnings</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ROOT ── -->
+  <div class="ecard pend">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">ROOT</div>
+          <div class="ticker-name">Root Insurance</div>
+          <div class="ticker-meta">NASDAQ · InsurTech / Telematics · Pendiente</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-neu">Pendiente resultado</span>
+        <span class="badge b-rmed">Riesgo Medio</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell"><div class="m-lbl">EPS Est</div><div class="m-val">$0.03</div></div>
+      <div class="m-cell"><div class="m-lbl">Revenue Est</div><div class="m-val">$68.7M</div></div>
+      <div class="m-cell"><div class="m-lbl">Q anterior</div><div class="m-val nu">Beat vs estimados</div></div>
+      <div class="m-cell"><div class="m-lbl">Contexto</div><div class="m-val up">Primas auto al alza</div></div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line">
+          <span>Telematics growth: <strong class="up">positivo YTD</strong></span>
+          <span>Macro inflacionario: <strong>favorable a primas</strong></span>
+        </div>
+        <div class="sent-row">
+          Sentimiento
+          <div class="sent-pips">
+            <div class="pip" style="background:var(--green-mid)"></div>
+            <div class="pip" style="background:var(--amber-mid)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+            <div class="pip" style="background:var(--border2)"></div>
+          </div>
+          <span class="nu">Mixto — alta incertidumbre pre-resultado</span>
+        </div>
+      </div>
+      <div class="strat" style="border-color:rgba(26,58,126,.12)">
+        <div class="strat-type">Estrategia · Opciones</div>
+        <div class="strat-move" style="color:var(--blue)">Straddle ATM</div>
+        <div class="strat-desc">Vto 1 sem · Mov. ±5–8% / 24–72h · InsurTech volátil + earnings incierto + inflación = convexidad favorable; gamma play puro</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SLP ── -->
+  <div class="ecard pend">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">SLP</div>
+          <div class="ticker-name">Simulations Plus</div>
+          <div class="ticker-meta">NASDAQ · Pharma Simulation Software · Pendiente</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-neu">Pendiente</span>
+        <span class="badge b-rlow">Riesgo Bajo</span>
+        <span class="badge b-neu">Liq. Opciones Baja</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell"><div class="m-lbl">EPS Est</div><div class="m-val">$0.29</div></div>
+      <div class="m-cell"><div class="m-lbl">Revenue Est</div><div class="m-val">$21.6M</div></div>
+      <div class="m-cell"><div class="m-lbl">Sector</div><div class="m-val nu">Pharma SaaS estable</div></div>
+      <div class="m-cell"><div class="m-lbl">Opciones</div><div class="m-val dn">Sin liquidez</div></div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line">
+          <span>Nicho con poca cobertura de analistas · modelo SaaS recurrente estable · sin opciones viables</span>
+        </div>
+      </div>
+      <div class="strat">
+        <div class="strat-type">Estrategia</div>
+        <div class="strat-move nu">Posición Accionaria</div>
+        <div class="strat-desc">Mov. ±3% / 24–72h · Evitar opciones por liquidez nula; posición directa si beat confirmado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BEEM ── -->
+  <div class="ecard avoid">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">BEEM</div>
+          <div class="ticker-name">Beam Global</div>
+          <div class="ticker-meta">NASDAQ · Clean Energy / EV Infrastructure · Pendiente</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-miss">Loss −$0.20</span>
+        <span class="badge b-rhi">Riesgo Alto</span>
+        <span class="badge b-neu">Micro-Cap</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell"><div class="m-lbl">EPS Est</div><div class="m-val dn">−$0.20</div></div>
+      <div class="m-cell"><div class="m-lbl">Revenue Est</div><div class="m-val">$8.25M</div></div>
+      <div class="m-cell"><div class="m-lbl">Opciones</div><div class="m-val dn">Liquidez nula</div></div>
+      <div class="m-cell"><div class="m-lbl">Perfil</div><div class="m-val nu">Especulativo</div></div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line"><span>Alta volatilidad · sin opciones viables · riesgo de dilución elevado</span></div>
+      </div>
+      <div class="strat" style="opacity:.6">
+        <div class="strat-type">Estrategia</div>
+        <div class="strat-move nu">Evitar / Sin Opciones</div>
+        <div class="strat-desc">Mov. ±8–15% / especulativo · Solo acciones ante sorpresa positiva; riesgo asimétrico al downside</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLIR ── -->
+  <div class="ecard avoid">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">CLIR</div>
+          <div class="ticker-name">ClearSign Technologies</div>
+          <div class="ticker-meta">NASDAQ · Industrial Clean Tech · Early Stage</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-miss">Loss −$0.30</span>
+        <span class="badge b-rhi">Riesgo Muy Alto</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell"><div class="m-lbl">EPS Est</div><div class="m-val dn">−$0.30</div></div>
+      <div class="m-cell"><div class="m-lbl">Revenue Est</div><div class="m-val">$2.42M</div></div>
+      <div class="m-cell"><div class="m-lbl">Etapa</div><div class="m-val nu">Pre-revenue / early</div></div>
+      <div class="m-cell"><div class="m-lbl">Opciones</div><div class="m-val dn">No existen</div></div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line"><span>Empresa early-stage · máximo riesgo de dilución · sin opciones · no hay setup viable</span></div>
+      </div>
+      <div class="strat" style="opacity:.6">
+        <div class="strat-type">Estrategia</div>
+        <div class="strat-move nu">Avoid Completamente</div>
+        <div class="strat-desc">Mov. ±8–20% / impredecible · Sin estrategia de opciones; dilución probable 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NTIC ── -->
+  <div class="ecard pend">
+    <div class="ch">
+      <div class="ch-left">
+        <div class="ticker-block">
+          <div class="ticker-sym">NTIC</div>
+          <div class="ticker-name">Northern Technologies International</div>
+          <div class="ticker-meta">NASDAQ · Corrosion Protection Industrial · Pendiente</div>
+        </div>
+      </div>
+      <div class="ch-right">
+        <span class="badge b-neu">Pendiente</span>
+        <span class="badge b-rlow">Riesgo Bajo</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="m-cell"><div class="m-lbl">EPS Est</div><div class="m-val">$0.02</div></div>
+      <div class="m-cell"><div class="m-lbl">Revenue Est</div><div class="m-val">$21.1M</div></div>
+      <div class="m-cell"><div class="m-lbl">Sector</div><div class="m-val nu">Industrial / Niche</div></div>
+      <div class="m-cell"><div class="m-lbl">Opciones</div><div class="m-val dn">Sin liquidez</div></div>
+    </div>
+    <div class="cb">
+      <div class="cb-left">
+        <div class="info-line"><span>Micro-cap industrial · sin opciones viables · watchlist únicamente</span></div>
+      </div>
+      <div class="strat">
+        <div class="strat-type">Estrategia</div>
+        <div class="strat-move nu">Watchlist Solamente</div>
+        <div class="strat-desc">Mov. ±3% / sin catalizador · No hay setup viable para trading activo</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /feed -->
+
+<!-- ASIDE -->
+<div class="aside">
+
+  <div class="aside-block">
+    <div class="aside-title">Ranking de oportunidades</div>
+
+    <div class="rank-row">
+      <span class="rn">1</span>
+      <span class="rt">BB</span>
+      <span class="rs">Bull Call Spread<br><span class="stars">★★★★★</span></span>
+      <span class="rm up">+5–12%</span>
+    </div>
+    <div class="rank-row">
+      <span class="rn">2</span>
+      <span class="rt">SMPL</span>
+      <span class="rs">Bear Put Spread<br><span class="stars">★★★★☆</span></span>
+      <span class="rm dn">−10–15%</span>
+    </div>
+    <div class="rank-row">
+      <span class="rn">3</span>
+      <span class="rt">BYRN</span>
+      <span class="rs">Long Call OTM<br><span class="stars">★★★☆☆</span></span>
+      <span class="rm up">+3–7%</span>
+    </div>
+    <div class="rank-row">
+      <span class="rn">4</span>
+      <span class="rt">ROOT</span>
+      <span class="rs">Straddle ATM<br><span class="stars">★★★☆☆</span></span>
+      <span class="rm" style="color:var(--blue)">±5–8%</span>
+    </div>
+    <div class="rank-row">
+      <span class="rn">5</span>
+      <span class="rt">NEOG</span>
+      <span class="rs">Iron Condor<br><span class="stars">★★☆☆☆</span></span>
+      <span class="rm nu">±3–5%</span>
+    </div>
+    <div class="rank-row">
+      <span class="rn">6</span>
+      <span class="rt">SLP</span>
+      <span class="rs">Acciones<br><span class="stars">★★☆☆☆</span></span>
+      <span class="rm nu">±3%</span>
+    </div>
+    <div class="rank-row">
+      <span class="rn">7</span>
+      <span class="rt" style="color:var(--ink4)">BEEM<br>CLIR</span>
+      <span class="rs">Evitar<br><span class="stars" style="color:var(--ink4)">★☆☆☆☆</span></span>
+      <span class="rm nu">—</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="aside-block">
+    <div class="aside-title">Monitor macro</div>
+
+    <div class="meter">
+      <div class="meter-head">
+        <span class="meter-name">WTI Crude</span>
+        <span class="meter-val dn">$97.20 <small style="font-size:10px">+6.1%</small></span>
+      </div>
+      <div class="mtrack"><div class="mfill" style="width:78%;background:var(--red-mid)"></div></div>
+      <div class="meter-sub">Hormuz aún restringido · Iran retiene control</div>
+    </div>
+
+    <div class="meter">
+      <div class="meter-head">
+        <span class="meter-name">VIX</span>
+        <span class="meter-val am">26.63 <small style="font-size:10px">+10.2%</small></span>
+      </div>
+      <div class="mtrack"><div class="mfill" style="width:54%;background:var(--amber-mid)"></div></div>
+      <div class="meter-sub">Elevated · pico reciente 35 (inicio guerra Irán)</div>
+    </div>
+
+    <div class="meter">
+      <div class="meter-head">
+        <span class="meter-name">10Y Treasury Yield</span>
+        <span class="meter-val">4.36%</span>
+      </div>
+      <div class="mtrack"><div class="mfill" style="width:60%;background:var(--ink3)"></div></div>
+      <div class="meter-sub">CPI mañana puede mover ±15bps</div>
+    </div>
+
+    <div class="meter">
+      <div class="meter-head">
+        <span class="meter-name">DXY Dollar</span>
+        <span class="meter-val dn">99.8 <small style="font-size:10px">−1.2%</small></span>
+      </div>
+      <div class="mtrack"><div class="mfill" style="width:38%;background:var(--blue)"></div></div>
+      <div class="meter-sub">Baja war premium · emergentes beneficiados</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="aside-block">
+    <div class="aside-title">Riesgos macro del día</div>
+
+    <div class="risk-item">
+      <div class="ri-dot" style="background:var(--red-mid)"></div>
+      <div>
+        <span class="ri-title">Ceasefire Irán — Frágil</span>
+        <span class="ri-text">Parlamento iraní rechaza el acuerdo · Hormuz sin flujo libre · Israel intensifica Líbano</span>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="ri-dot" style="background:var(--red-mid)"></div>
+      <div>
+        <span class="ri-title">CPI Marzo — Mañana 8:30 AM ET</span>
+        <span class="ri-text">Consenso +3.70% YoY · Energía + tariffs presionan al alza · Fed no puede cortar tasas</span>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="ri-dot" style="background:var(--amber-mid)"></div>
+      <div>
+        <span class="ri-title">Earnings Season Q1 Arranca</span>
+        <span class="ri-text">JPMorgan reporta martes 14 Abr · Guías corporativas con trifecta macro adversa según BlackRock</span>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="ri-dot" style="background:var(--amber-mid)"></div>
+      <div>
+        <span class="ri-title">Fed Meeting — 29 Abr</span>
+        <span class="ri-text">Sin corte esperado · PCE core 3.0% · Solo 15% mercado cree en corte</span>
+      </div>
+    </div>
+
+    <div class="risk-item">
+      <div class="ri-dot" style="background:var(--blue)"></div>
+      <div>
+        <span class="ri-title">Islamabad Talks — Sábado</span>
+        <span class="ri-text">Vance + Witkoff + Kushner negocian con Irán · catalizador positivo si avanza</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /aside -->
+</div><!-- /body-wrap -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-warn">⚠ Solo informativo. No constituye asesoría financiera. Verifica precios de opciones en tiempo real antes de ejecutar.</div>
+  <div class="footer-sources">
+    <span class="fsrc">Benzinga</span>
+    <span class="fsrc">Gurufocus</span>
+    <span class="fsrc">Zacks</span>
+    <span class="fsrc">MarketBeat</span>
+    <span class="fsrc">CNBC</span>
+  </div>
+</footer>
+
+<script>
+// Build ticker tape
+const items = [
+  {sym:'BB',    val:'$4.38',    chg:'+6.6%',  cls:'t-up'},
+  {sym:'SMPL',  val:'$12.67',   chg:'−12.1%', cls:'t-dn'},
+  {sym:'BYRN',  val:'$8.42',    chg:'+4.2%',  cls:'t-up'},
+  {sym:'NEOG',  val:'$9.80',    chg:'−2.9%',  cls:'t-dn'},
+  {sym:'ROOT',  val:'$7.15',    chg:'−1.2%',  cls:'t-dn'},
+  {sym:'S&P500',val:'6,564',    chg:'−0.72%', cls:'t-dn'},
+  {sym:'NASDAQ',val:'21,771',   chg:'−1.02%', cls:'t-dn'},
+  {sym:'WTI',   val:'$97.20',   chg:'+6.1%',  cls:'t-dn'},
+  {sym:'VIX',   val:'26.63',    chg:'+10.2%', cls:'t-dn'},
+  {sym:'GOLD',  val:'$4,672',   chg:'−0.3%',  cls:'t-fl'},
+  {sym:'DXY',   val:'99.8',     chg:'−1.2%',  cls:'t-dn'},
+  {sym:'10Y',   val:'4.36%',    chg:'+2.7bp', cls:'t-dn'},
+  {sym:'BTC',   val:'$68,093',  chg:'−2.57%', cls:'t-dn'},
+];
+const tape = document.getElementById('tape');
+const full = [...items, ...items];
+tape.innerHTML = full.map(i=>`
+  <span class="tape-item">
+    <span class="t-sym">${i.sym}</span>
+    <span class="t-val">${i.val}</span>
+    <span class="${i.cls}">${i.chg}</span>
+  </span>`).join('');
+</script>
+</body>
+</html>

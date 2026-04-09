@@ -1,0 +1,262 @@
+
+<h2 class="sr-only">Reporte de earnings después del cierre – 9 de abril de 2026</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.hdr{padding:1.25rem 1.5rem 1rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--border-radius-md)}
+.badge-live{background:var(--color-background-danger);color:var(--color-text-danger)}
+.badge-ac{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}
+.hdr h1{font-size:17px;font-weight:500;color:var(--color-text-primary);margin-top:4px}
+.hdr p{font-size:13px;color:var(--color-text-secondary);margin-top:2px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:0.75rem 1rem}
+.card-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.ticker-wrap{display:flex;align-items:center;gap:10px}
+.ticker-box{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.company{font-size:12px;color:var(--color-text-secondary);margin-top:1px}
+.pill{font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px}
+.pill-beat{background:#EAF3DE;color:#3B6D11}
+.pill-miss{background:#FCEBEB;color:#A32D2D}
+.pill-mixed{background:#FAEEDA;color:#854F0B}
+.pill-pending{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:7px 10px}
+.metric-label{font-size:11px;color:var(--color-text-tertiary);margin-bottom:2px}
+.metric-val{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.metric-sub{font-size:11px;color:var(--color-text-secondary)}
+.section{margin-bottom:8px}
+.section-lbl{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.section-txt{font-size:12.5px;color:var(--color-text-secondary);line-height:1.55}
+.strat-box{background:var(--color-background-info);border:0.5px solid var(--color-border-info);border-radius:var(--border-radius-md);padding:8px 12px;margin-top:8px}
+.strat-lbl{font-size:10px;font-weight:500;color:var(--color-text-info);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.strat-txt{font-size:12.5px;color:var(--color-text-info);line-height:1.5}
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:0 1rem}
+.rank-wrap{margin:0.75rem 1rem}
+.rank-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px}
+.rank-table{width:100%;border-collapse:collapse;font-size:12px}
+.rank-table th{font-size:11px;font-weight:500;color:var(--color-text-tertiary);padding:4px 8px;text-align:left;border-bottom:0.5px solid var(--color-border-tertiary)}
+.rank-table td{padding:6px 8px;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:top}
+.rank-table tr:last-child td{border-bottom:none}
+.opp-alta{color:#3B6D11;font-weight:500}
+.opp-med{color:#854F0B;font-weight:500}
+.macro-box{margin:0.75rem 1rem;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;border-left:3px solid #E24B4A;border-top-left-radius:0;border-bottom-left-radius:0}
+.macro-lbl{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.macro-txt{font-size:12.5px;color:var(--color-text-secondary);line-height:1.6}
+.disc{margin:0.75rem 1rem 1.25rem;font-size:11px;color:var(--color-text-tertiary);line-height:1.5;border-top:0.5px solid var(--color-border-tertiary);padding-top:10px}
+.sources{font-size:11px;color:var(--color-text-tertiary);margin-top:4px}
+</style>
+
+<div class="hdr">
+  <div class="hdr-top">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="badge badge-ac">Después del cierre</span>
+      <span class="badge badge-live">9 ABR 2026</span>
+    </div>
+    <span style="font-size:12px;color:var(--color-text-tertiary)">VIX: ~24 · S&P500: +0.44%</span>
+  </div>
+  <h1>Reporte diario de earnings – Después del cierre</h1>
+  <p>Empresas con resultados liberados hoy tras el cierre de mercado · Estrategias de opciones incluidas</p>
+</div>
+
+<!-- BB -->
+<div class="card">
+  <div class="card-hdr">
+    <div class="ticker-wrap">
+      <div>
+        <div class="ticker-box">BB – BlackBerry Ltd.</div>
+        <div class="company">NYSE · Software embebido / Ciberseguridad · Cap: ~$2.0B</div>
+      </div>
+    </div>
+    <span class="pill pill-beat">BEAT</span>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">EPS real vs est.</div><div class="metric-val">$0.06</div><div class="metric-sub">est. $0.04 (+50%)</div></div>
+    <div class="metric"><div class="metric-label">Rev. real vs est.</div><div class="metric-val">$156.0M</div><div class="metric-sub">est. $144.4M (+8%)</div></div>
+    <div class="metric"><div class="metric-label">Trimestre ant.</div><div class="metric-val">EPS $0.05</div><div class="metric-sub">vs est. $0.03 – beat</div></div>
+  </div>
+  <div class="section"><div class="section-lbl">Resultados clave</div><div class="section-txt">QNX record: $78.7M rev. +20% YoY. Secure Comms vuelve a crecer. FY2026: rev. $549M (+3%), GAAP neto +$53.2M (vs pérdida $79M año ant.). Guía FY2027: $584–$611M. Backlog royalties QNX: $950M.</div></div>
+  <div class="section"><div class="section-lbl">Sentimiento</div><div class="section-txt">Positivo. Twitter/Reddit destaca 8 trimestres consecutivos de mejora en GAAP neto y retorno a crecimiento. Analistas sorprendidos por QNX +20%. [Newswire, GuruFocus, MarketBeat]</div></div>
+  <div class="section"><div class="section-lbl">Pronóstico 24–72h</div><div class="section-txt">+5% a +12% potencial en AH/apertura. IV históricamente baja en BB; momentum técnico positivo (50DMA: $3.41). Beta 1.70 amplifica el movimiento.</div></div>
+  <div class="strat-box"><div class="strat-lbl">Estrategia de opciones recomendada</div><div class="strat-txt">Call comprada OTM strike $4.00–$4.50 exp. 1–2 semanas. Beat masivo + guía sólida justifican sesgo alcista; IV baja hace la prima asequible. Riesgo limitado a prima pagada.</div></div>
+  <div class="sources">Fuentes: Newswire, GuruFocus, MarketBeat, Yahoo Finance, BlackBerry IR</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- STZ -->
+<div class="card">
+  <div class="card-hdr">
+    <div class="ticker-wrap">
+      <div>
+        <div class="ticker-box">STZ – Constellation Brands</div>
+        <div class="company">NYSE · Bebidas alcohólicas · Cap: ~$26.8B</div>
+      </div>
+    </div>
+    <span class="pill pill-beat">BEAT</span>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">EPS real vs est.</div><div class="metric-val">$1.90</div><div class="metric-sub">est. $1.72 (+10.5%)</div></div>
+    <div class="metric"><div class="metric-label">Rev. real vs est.</div><div class="metric-val">$1.92B</div><div class="metric-sub">est. $1.88B (+2.1%)</div></div>
+    <div class="metric"><div class="metric-label">Reacción hist. prom.</div><div class="metric-val">-1.1%</div><div class="metric-sub">rango: -17% a +5.3%</div></div>
+  </div>
+  <div class="section"><div class="section-lbl">Resultados clave</div><div class="section-txt">Q4 neto: $224.7M (vs pérdida $370.6M año ant.). Beer sigue siendo motor de crecimiento; rev. FY2026 total -3%. CEO entrante Nicholas Fink toma mando el 13 abr. Outlook: regreso al crecimiento, ambiente "dinámico".</div></div>
+  <div class="section"><div class="section-lbl">Sentimiento</div><div class="section-txt">Mixto. Beat en Q4 positivo, pero guía cautelosa y caída FY top-line preocupa. CNBC/SA: analistas divididos; la transición de CEO añade incertidumbre. [CNBC, StockTitan, Yahoo Finance]</div></div>
+  <div class="section"><div class="section-lbl">Pronóstico 24–72h</div><div class="section-txt">Movimiento contenido ±3–5%. STZ cotiza ~$153–$155; 200DMA ~$150. El beat puntual vs guía conservadora neutralizan la reacción.</div></div>
+  <div class="strat-box"><div class="strat-lbl">Estrategia de opciones recomendada</div><div class="strat-txt">Iron Condor corto-plazo (strikes $145P/$150P/$160C/$165C). Movimiento histórico pequeño + sentimiento mixto + IV post-earnings sugiere rango lateral. Prima capturada si STZ se mantiene entre $150–$160.</div></div>
+  <div class="sources">Fuentes: CNBC, GlobeNewswire, StockTitan, Yahoo Finance, Benzinga</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- APLD -->
+<div class="card">
+  <div class="card-hdr">
+    <div class="ticker-wrap">
+      <div>
+        <div class="ticker-box">APLD – Applied Digital Corp.</div>
+        <div class="company">NASDAQ · Infraestructura AI / HPC Data Centers · Beta: 7.27</div>
+      </div>
+    </div>
+    <span class="pill pill-beat">BEAT MASIVO</span>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">EPS ajustado vs est.</div><div class="metric-val">$0.09</div><div class="metric-sub">est. -$0.14 (+164%)</div></div>
+    <div class="metric"><div class="metric-label">Rev. HPC vs est.</div><div class="metric-val">$71.0M</div><div class="metric-sub">+67.7% sobre estimado</div></div>
+    <div class="metric"><div class="metric-label">Reacción AH</div><div class="metric-val">+12.68%</div><div class="metric-sub">+10.37% en regular</div></div>
+  </div>
+  <div class="section"><div class="section-lbl">Resultados clave</div><div class="section-txt">EBITDA ajustado: $44.1M. 100 MW data center liquid-cooled online. Polaris Forge 1 y 2 en tiempo. CoreWeave SPV restructurado con rating A3. Delta Forge 1: 430 MW en construcción. GAAP net loss: $100.9M (non-cash write-down $59.7M).</div></div>
+  <div class="section"><div class="section-lbl">Sentimiento</div><div class="section-txt">Muy positivo en AH; Reddit/Twitter celebra beat masivo y ejecución operativa. Riesgo dilución (ATM $60M) mencionado. +447% retorno 12 meses. [Investing.com, Yahoo Finance, Motley Fool]</div></div>
+  <div class="section"><div class="section-lbl">Pronóstico 24–72h</div><div class="section-txt">+10% a +25% en apertura. Alta volatilidad (beta 7.27). Posible consolidación tras spike; cadena de suministro AI sigue siendo riesgo de mediano plazo.</div></div>
+  <div class="strat-box"><div class="strat-lbl">Estrategia de opciones recomendada</div><div class="strat-txt">Bull Call Spread (compra call ATM + venta call OTM +15%). IV post-earnings inflada hace costosas las calls puras; el spread reduce prima neta y limita riesgo al tiempo que captura el movimiento alcista ya iniciado en AH.</div></div>
+  <div class="sources">Fuentes: Investing.com, Motley Fool, Applied Digital IR, Yahoo Finance</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PSMT -->
+<div class="card">
+  <div class="card-hdr">
+    <div class="ticker-wrap">
+      <div>
+        <div class="ticker-box">PSMT – PriceSmart Inc.</div>
+        <div class="company">NASDAQ · Retail / Warehouse Clubs LATAM · Cap: mediana</div>
+      </div>
+    </div>
+    <span class="pill pill-beat">BEAT</span>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">EPS real</div><div class="metric-val">$1.62</div><div class="metric-sub">diluted por acción</div></div>
+    <div class="metric"><div class="metric-label">Rev. total</div><div class="metric-val">$1.50B</div><div class="metric-sub">+9.7% YoY</div></div>
+    <div class="metric"><div class="metric-label">Net merch. sales</div><div class="metric-val">$1.47B</div><div class="metric-sub">+9.9% YoY; comps +7.6%</div></div>
+  </div>
+  <div class="section"><div class="section-lbl">Resultados clave</div><div class="section-txt">Ventas constantes en moneda local +7.8%. FX positivo (+$27.7M). Planea 4 nuevos clubes en 2026 (de 56 a 60). Expansion Guatemala (club 8) anunciada. Momentum sólido en LATAM.</div></div>
+  <div class="section"><div class="section-lbl">Sentimiento</div><div class="section-txt">Positivo. Crecimiento consistente y expansión geográfica bien recibidos. Riesgo: exposición a FX y ambiente macro LATAM. [PRNewswire, Yahoo Finance]</div></div>
+  <div class="section"><div class="section-lbl">Pronóstico 24–72h</div><div class="section-txt">+3% a +6% moderado. PSMT tiende a movimientos contenidos post-earnings. Stock defensivo con buenas comps.</div></div>
+  <div class="strat-box"><div class="strat-lbl">Estrategia de opciones recomendada</div><div class="strat-txt">Call spread bull OTM moderado (ej. +$5% / +$10% sobre precio actual). Beat sólido pero acción típicamente no ofrece grandes saltos; el spread captura upside limitado con costo reducido vs call simple.</div></div>
+  <div class="sources">Fuentes: PRNewswire, Yahoo Finance, Benzinga, StockTitan</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BB Q4 ya reportado antes del cierre -->
+<!-- SMPL/ROOT/BYRN – pre-market del 9 -->
+<div class="card">
+  <div class="card-hdr">
+    <div class="ticker-wrap">
+      <div>
+        <div class="ticker-box">ROOT – Root Insurance</div>
+        <div class="company">NASDAQ · InsurTech · Cap: pequeña</div>
+      </div>
+    </div>
+    <span class="pill pill-pending">REPORTA HOY</span>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">EPS estimado</div><div class="metric-val">$0.03</div><div class="metric-sub">[Benzinga]</div></div>
+    <div class="metric"><div class="metric-label">Rev. estimada</div><div class="metric-val">$68.7M</div><div class="metric-sub">[Benzinga]</div></div>
+    <div class="metric"><div class="metric-label">Trimestre ant.</div><div class="metric-val">Pérdida</div><div class="metric-sub">mejora progresiva</div></div>
+  </div>
+  <div class="section"><div class="section-lbl">Contexto</div><div class="section-txt">InsurTech en transición hacia rentabilidad. Pendiente de resultados; alta sensibilidad si beat en EPS (primera rentabilidad trimestral). Volumen de opciones históricamente bajo.</div></div>
+  <div class="section"><div class="section-lbl">Sentimiento</div><div class="section-txt">Mixto-neutral. Traders especulativos siguen el turnaround. Reddit/WSB mencionan ROOT ocasionalmente como momentum play. [Benzinga]</div></div>
+  <div class="section"><div class="section-lbl">Pronóstico 24–72h</div><div class="section-txt">±8–15% dependiendo de resultado. Pequeña cap con alta volatilidad implícita.</div></div>
+  <div class="strat-box"><div class="strat-lbl">Estrategia de opciones recomendada</div><div class="strat-txt">Straddle ATM corto vencimiento. Alta IV + incertidumbre resultado + cap pequeña → movimiento grande en cualquier dirección. El straddle captura el movimiento sin sesgo direccional.</div></div>
+  <div class="sources">Fuentes: Benzinga</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-hdr">
+    <div class="ticker-wrap">
+      <div>
+        <div class="ticker-box">WDFC – WD-40 Company</div>
+        <div class="company">NASDAQ · Productos industriales/consumidor</div>
+      </div>
+    </div>
+    <span class="pill pill-pending">REPORTA HOY</span>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">EPS estimado</div><div class="metric-val">$1.40</div><div class="metric-sub">[Benzinga]</div></div>
+    <div class="metric"><div class="metric-label">Rev. estimada</div><div class="metric-val">$154.3M</div><div class="metric-sub">[Benzinga]</div></div>
+    <div class="metric"><div class="metric-label">Historial beat</div><div class="metric-val">Frecuente</div><div class="metric-sub">marca consistente</div></div>
+  </div>
+  <div class="section"><div class="section-lbl">Contexto</div><div class="section-txt">Marca global defensiva. Exposición a FX y costos de materias primas. El ceasefire con Irán podría bajar costos de insumos industriales, beneficio moderado.</div></div>
+  <div class="section"><div class="section-lbl">Sentimiento</div><div class="section-txt">Positivo-estable. No es ticker especulativo; analistas ven crecimiento internacional como catalizador. [Benzinga, Yahoo Finance]</div></div>
+  <div class="section"><div class="section-lbl">Pronóstico 24–72h</div><div class="section-txt">Movimiento contenido ±2–4%. Stock defensivo de baja beta.</div></div>
+  <div class="strat-box"><div class="strat-lbl">Estrategia de opciones recomendada</div><div class="strat-txt">Iron Condor amplio. Baja IV y baja beta hacen poco atractivas las estrategias direccionales; capturar prima con rango lateral es lo óptimo para este perfil defensivo.</div></div>
+  <div class="sources">Fuentes: Benzinga</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-hdr">
+    <div class="ticker-wrap">
+      <div>
+        <div class="ticker-box">BYRN – Byrna Technologies</div>
+        <div class="company">NASDAQ · Seguridad / No-letal · Cap: pequeña</div>
+      </div>
+    </div>
+    <span class="pill pill-pending">REPORTA HOY</span>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">EPS estimado</div><div class="metric-val">$0.05</div><div class="metric-sub">[Benzinga]</div></div>
+    <div class="metric"><div class="metric-label">Rev. estimada</div><div class="metric-val">$29.5M</div><div class="metric-sub">[Benzinga]</div></div>
+    <div class="metric"><div class="metric-label">Contexto sector</div><div class="metric-val">Defensa</div><div class="metric-sub">demanda gubernamental</div></div>
+  </div>
+  <div class="section"><div class="section-lbl">Contexto</div><div class="section-txt">Crecimiento en ventas de armamento no-letal para fuerzas del orden. Ceasefire Irán podría reducir urgencia de gasto gubernamental en defensa ligera a corto plazo.</div></div>
+  <div class="section"><div class="section-lbl">Sentimiento</div><div class="section-txt">Neutral. Ticker de nicho; poco seguimiento retail. [Benzinga]</div></div>
+  <div class="strat-box"><div class="strat-lbl">Estrategia de opciones recomendada</div><div class="strat-txt">Call OTM especulativo de bajo costo si se anticipa beat. Volumen de opciones bajo hace difícil ejecutar estrategias complejas en este ticker.</div></div>
+  <div class="sources">Fuentes: Benzinga</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Tabla ranking -->
+<div class="rank-wrap">
+  <div class="rank-title">Ranking de oportunidades – 9 de abril 2026</div>
+  <table class="rank-table">
+    <thead><tr><th>Ticker</th><th>Oportunidad</th><th>Razón</th><th>Estrategia</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:500;color:var(--color-text-primary)">APLD</td><td class="opp-alta">Alta</td><td>Beat masivo +164% EPS; AH +12.7%; AI catalyst sólido</td><td>Bull Call Spread</td></tr>
+      <tr><td style="font-weight:500;color:var(--color-text-primary)">BB</td><td class="opp-alta">Alta</td><td>Beat +50% EPS; QNX record; guía FY27 sólida; IV baja</td><td>Call OTM comprada</td></tr>
+      <tr><td style="font-weight:500;color:var(--color-text-primary)">ROOT</td><td class="opp-med">Media</td><td>Posible primer trimestre rentable; alta volatilidad implícita</td><td>Straddle ATM</td></tr>
+      <tr><td style="font-weight:500;color:var(--color-text-primary)">PSMT</td><td class="opp-med">Media</td><td>Beat sólido +9.9% rev.; movimiento típicamente moderado</td><td>Call Spread bull moderado</td></tr>
+      <tr><td style="font-weight:500;color:var(--color-text-primary)">STZ</td><td class="opp-med">Media</td><td>Beat puntual pero guía conservadora; CEO transition = incertidumbre</td><td>Iron Condor</td></tr>
+      <tr><td style="font-weight:500;color:var(--color-text-primary)">WDFC</td><td style="color:var(--color-text-secondary);font-weight:500">Baja</td><td>Defensivo; baja beta; movimiento mínimo esperado</td><td>Iron Condor amplio</td></tr>
+      <tr><td style="font-weight:500;color:var(--color-text-primary)">BYRN</td><td style="color:var(--color-text-secondary);font-weight:500">Baja</td><td>Nicho; bajo volumen opciones; difícil ejecución</td><td>Call OTM especulativo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- Macro -->
+<div class="macro-box">
+  <div class="macro-lbl">Riesgos macro del día – 9 abr 2026</div>
+  <div class="macro-txt">VIX ~24 (bajó desde ~30 tras ceasefire Irán-EE.UU., pero ceasefire "frágil" según VP Vance). WTI ~$97 (rebotó tras caída -16% del miércoles). Fed: probabilidad de recorte sube a 43% según CME FedWatch. Rendimiento del T-10Y: 4.36% (+subiendo). PCE feb. disponible esta semana; CPI marzo viernes = catalizador potencial. Hormuz: apertura condicionada por Irán. Riesgo principal: colapso ceasefire = spike rápido en VIX y energía. [Bloomberg, CNBC, Reuters, Zacks]</div>
+</div>
+
+<div class="disc">
+  <strong>Disclaimer:</strong> Este reporte es exclusivamente informativo y educativo. No constituye asesoría financiera, de inversión ni de opciones. Las estrategias de opciones descritas conllevan riesgos significativos, incluyendo pérdida total de la prima invertida. Las opciones pueden expirar sin valor. Consulte a un asesor financiero certificado antes de operar. Datos verificados en fuentes públicas al 9 de abril de 2026. Rendimientos pasados no garantizan resultados futuros.
+</div>
