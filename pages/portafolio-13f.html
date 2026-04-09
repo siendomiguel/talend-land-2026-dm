@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio Institucional 13F — Daniel Muvdi Trading Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a14;
+    --surface: #0b1422;
+    --surface2: #0f1c30;
+    --surface3: #152540;
+    --border: rgba(56,140,255,0.1);
+    --border2: rgba(56,140,255,0.2);
+    --text: #deeeff;
+    --text2: #6e96c0;
+    --text3: #2e5070;
+    --accent: #3d9eff;
+    --accent2: #72c0ff;
+    --accent-dim: rgba(61,158,255,0.12);
+    --blue-deep: #1a5fc8;
+    --blue-mid: #2279e0;
+    --blue-bright: #3d9eff;
+    --blue-sky: #72c0ff;
+    --blue-pale: #b8dcff;
+    --green: #38d9a9;
+    --green-dim: rgba(56,217,169,0.1);
+    --red: #ff6b7a;
+    --red-dim: rgba(255,107,122,0.1);
+    --cyan: #4ec9e8;
+    --cyan-dim: rgba(78,201,232,0.1);
+    --indigo: #7b8cff;
+    --indigo-dim: rgba(123,140,255,0.1);
+    --sky: #38bdf8;
+    --sky-dim: rgba(56,189,248,0.1);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251,191,36,0.1);
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 32px 24px 64px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 0%, rgba(30,90,200,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 10% 90%, rgba(20,70,160,0.06) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .container { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid var(--border2);
+  }
+  .header-left { display: flex; align-items: center; gap: 24px; }
+  .logo-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: .8;
+  }
+  .main-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+  }
+  .main-title em { font-style: italic; color: var(--blue-sky); }
+  .coach-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 5px;
+    letter-spacing: .06em;
+  }
+  .coach-tag strong { color: var(--accent2); font-weight: 500; }
+  .header-meta {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    line-height: 2;
+  }
+  .header-meta span { color: var(--text2); }
+
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .metric-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+  .metric-card:hover { border-color: var(--border2); }
+  .metric-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue-mid), var(--blue-sky), transparent);
+    opacity: .6;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+  .metric-value { font-size: 26px; font-weight: 600; color: var(--text); line-height: 1; }
+  .metric-sub { font-size: 11px; color: var(--text3); margin-top: 5px; font-family: 'DM Mono', monospace; }
+  .metric-sub.highlight { color: var(--blue-sky); }
+
+  .section-label {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: ''; width: 3px; height: 16px;
+    background: linear-gradient(180deg, var(--blue-mid), var(--blue-sky));
+    border-radius: 2px; flex-shrink: 0;
+  }
+  .section-label h2 {
+    font-size: 13px; font-weight: 600; color: var(--text2);
+    letter-spacing: .08em; text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .alloc-section {
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px;
+  }
+  .alloc-bar-row {
+    display: grid; grid-template-columns: 100px 1fr 52px;
+    align-items: center; gap: 14px; margin-bottom: 12px;
+  }
+  .alloc-bar-row:last-child { margin-bottom: 0; }
+  .alloc-ticker { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--text); }
+  .alloc-ticker small { display: block; font-size: 10px; color: var(--text3); font-weight: 400; margin-top: 1px; }
+  .alloc-track { height: 6px; background: var(--surface3); border-radius: 3px; overflow: hidden; }
+  .alloc-fill { height: 100%; border-radius: 3px; }
+  .alloc-pct { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text2); text-align: right; }
+
+  .positions-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 16px; margin-bottom: 20px;
+  }
+  .pos-card {
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 20px;
+    transition: border-color .2s, transform .15s;
+  }
+  .pos-card:hover { border-color: var(--border2); transform: translateY(-1px); }
+  .pos-card.full-width { grid-column: 1 / -1; }
+  .pos-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .pos-badge {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+  .pos-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); line-height: 1.1; }
+  .pos-name small { font-family: 'Syne', sans-serif; font-size: 12px; color: var(--text3); font-weight: 400; display: block; margin-top: 2px; }
+  .pos-price-block { text-align: right; }
+  .pos-price-label { font-size: 10px; color: var(--text3); font-family: 'DM Mono', monospace; }
+  .pos-price { font-size: 22px; font-weight: 600; color: var(--text); font-family: 'DM Mono', monospace; }
+  .pos-alloc { font-size: 11px; color: var(--blue-sky); font-family: 'DM Mono', monospace; margin-top: 2px; }
+  .pos-tesis {
+    font-size: 12.5px; color: var(--text2); line-height: 1.65; margin-bottom: 14px;
+    border-left: 2px solid var(--surface3); padding-left: 12px;
+  }
+  .fund-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .fund-tag {
+    font-size: 10px; font-family: 'DM Mono', monospace;
+    padding: 3px 8px; border-radius: 4px; border: 0.5px solid;
+  }
+
+  .table-wrap {
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px;
+  }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .table-wrap thead th {
+    background: var(--surface2); font-size: 10px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--text3);
+    padding: 12px 16px; text-align: left; font-family: 'DM Mono', monospace;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .table-wrap tbody td { padding: 12px 16px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap tbody tr:hover td { background: var(--surface2); }
+  .t-ticker { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 14px; color: var(--text); }
+  .t-price { font-family: 'DM Mono', monospace; color: var(--text2); }
+  .t-target { font-family: 'DM Mono', monospace; color: var(--text); font-weight: 500; }
+  .t-up { color: var(--green); font-family: 'DM Mono', monospace; font-weight: 500; }
+  .risk-bar { display: flex; align-items: center; gap: 8px; }
+  .risk-dots { display: flex; gap: 3px; }
+  .risk-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .risk-label { font-size: 11px; color: var(--text3); }
+  .rating-chip {
+    font-size: 10px; font-family: 'DM Mono', monospace; font-weight: 500;
+    padding: 3px 8px; border-radius: 4px; border: 0.5px solid; letter-spacing: .04em;
+  }
+
+  .scenarios-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-bottom: 20px; }
+  .scenario-card {
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 22px; position: relative; overflow: hidden;
+  }
+  .scenario-card.base-case { border-color: rgba(61,158,255,0.35); }
+  .scenario-card.base-case::before {
+    content: 'ESCENARIO BASE'; position: absolute; top: 12px; right: 14px;
+    font-size: 8px; font-family: 'DM Mono', monospace; color: var(--accent);
+    letter-spacing: .1em;
+  }
+  .sc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .sc-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .sc-title { font-size: 15px; font-weight: 600; }
+  .sc-return { font-family: 'DM Serif Display', serif; font-size: 32px; margin-bottom: 12px; line-height: 1; }
+  .sc-desc { font-size: 12px; color: var(--text2); line-height: 1.65; margin-bottom: 14px; }
+  .sc-capital { font-family: 'DM Mono', monospace; font-size: 12px; padding: 8px 12px; border-radius: 6px; font-weight: 500; }
+
+  .fund-legend {
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 20px 24px; margin-bottom: 20px;
+    display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+  }
+  .fund-legend-label { font-size: 10px; color: var(--text3); letter-spacing: .1em; text-transform: uppercase; font-family: 'DM Mono', monospace; flex-shrink: 0; }
+  .fund-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fund-pill { display: flex; align-items: center; gap: 6px; font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text2); }
+  .fund-pill-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .disclaimer {
+    font-size: 10.5px; color: var(--text3); line-height: 1.7;
+    border-top: 0.5px solid var(--border); padding-top: 20px; margin-top: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .animate { animation: fadeUp .5s ease both; }
+  .d1{animation-delay:.05s}.d2{animation-delay:.10s}.d3{animation-delay:.15s}
+  .d4{animation-delay:.20s}.d5{animation-delay:.25s}.d6{animation-delay:.30s}
+  .d7{animation-delay:.35s}.d8{animation-delay:.40s}.d9{animation-delay:.45s}
+  .d10{animation-delay:.50s}
+
+  @media (max-width: 780px) {
+    .metrics-row { grid-template-columns: repeat(2,1fr); }
+    .positions-grid { grid-template-columns: 1fr; }
+    .scenarios-grid { grid-template-columns: 1fr; }
+    .main-title { font-size: 24px; }
+    .header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .header-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header animate d1">
+    <div class="header-left">
+      <div class="logo-wrap">
+        <img src="data:image/png;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP3p6OqqKepqIYJJIaViPne1uqRtVyNRVXm1c5E8J+AAAAAAAAAAAAAAAAAAAAAAAAP3oqSqrZXx0kEkz2RvlcjG68VjUVznL2kRFUD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO1abdXXa5QW22Uk1ZWVD0ZDBCxXPkcvMiJyqdU3HsZWhLvtDYeRWcZtGslWqKmqdg1NdF39QPfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Daniel Muvdi Trading Coach" style="width:90px;height:auto;display:block;" />
+      </div>
+      <div class="header-text">
+        <div class="eyebrow">Analisis 13F Filing — Q4 2025</div>
+        <h1 class="main-title">Portafolio <em>Institucional</em><br>Smart Money 2026</h1>
+        <div class="coach-tag">by <strong>Daniel Muvdi</strong> · Trading Coach</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div>Actualizado <span>08 Abr 2026</span></div>
+      <div>Fuentes: BRK · Bridgewater · RenTec · Citadel · ARK</div>
+      <div>Horizonte <span>24 meses</span></div>
+      <div>Riesgo <span>Moderado</span></div>
+    </div>
+  </header>
+
+  <div class="metrics-row">
+    <div class="metric-card animate d2">
+      <div class="metric-label">Capital inicial</div>
+      <div class="metric-value">$25,000</div>
+      <div class="metric-sub highlight">+ $2,000 / mes</div>
+    </div>
+    <div class="metric-card animate d3">
+      <div class="metric-label">Capital proyectado 24M</div>
+      <div class="metric-value">$78,400</div>
+      <div class="metric-sub">Escenario base</div>
+    </div>
+    <div class="metric-card animate d4">
+      <div class="metric-label">Objetivo vs S&amp;P 500</div>
+      <div class="metric-value">+3 pts</div>
+      <div class="metric-sub">Anual por encima del indice</div>
+    </div>
+    <div class="metric-card animate d5">
+      <div class="metric-label">Posiciones seleccionadas</div>
+      <div class="metric-value">7</div>
+      <div class="metric-sub">3 sectores + 1 ETF ancla</div>
+    </div>
+  </div>
+
+  <div class="section-label animate d5"><h2>Distribucion del portafolio</h2></div>
+  <div class="alloc-section animate d6">
+    <div class="alloc-bar-row">
+      <div class="alloc-ticker">META <small>Tecnologia / IA</small></div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:100%;background:linear-gradient(90deg,#1a5fc8,#3d9eff)"></div></div>
+      <div class="alloc-pct">20%</div>
+    </div>
+    <div class="alloc-bar-row">
+      <div class="alloc-ticker">CVX <small>Energia</small></div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:75%;background:linear-gradient(90deg,#1a5fc8,#2d8ccc)"></div></div>
+      <div class="alloc-pct">15%</div>
+    </div>
+    <div class="alloc-bar-row">
+      <div class="alloc-ticker">MU <small>Semiconductores</small></div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:75%;background:linear-gradient(90deg,#2279e0,#4ec9e8)"></div></div>
+      <div class="alloc-pct">15%</div>
+    </div>
+    <div class="alloc-bar-row">
+      <div class="alloc-ticker">AXP <small>Financiero</small></div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:75%;background:linear-gradient(90deg,#3a4acc,#7b8cff)"></div></div>
+      <div class="alloc-pct">15%</div>
+    </div>
+    <div class="alloc-bar-row">
+      <div class="alloc-ticker">SCHD <small>ETF Ancla</small></div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:75%;background:linear-gradient(90deg,#2260a8,#72c0ff)"></div></div>
+      <div class="alloc-pct">15%</div>
+    </div>
+    <div class="alloc-bar-row">
+      <div class="alloc-ticker">CB <small>Seguros P&amp;C</small></div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:50%;background:linear-gradient(90deg,#1a4a90,#3880d0)"></div></div>
+      <div class="alloc-pct">10%</div>
+    </div>
+    <div class="alloc-bar-row">
+      <div class="alloc-ticker">VST <small>Infraest. electrica</small></div>
+      <div class="alloc-track"><div class="alloc-fill" style="width:50%;background:linear-gradient(90deg,#1560b0,#38bdf8)"></div></div>
+      <div class="alloc-pct">10%</div>
+    </div>
+  </div>
+
+  <div class="fund-legend animate d6">
+    <div class="fund-legend-label">Fondos comprando</div>
+    <div class="fund-pills">
+      <div class="fund-pill"><div class="fund-pill-dot" style="background:#7b8cff"></div>Berkshire Hathaway</div>
+      <div class="fund-pill"><div class="fund-pill-dot" style="background:#4ec9e8"></div>Bridgewater Associates</div>
+      <div class="fund-pill"><div class="fund-pill-dot" style="background:#3d9eff"></div>Citadel (Ken Griffin)</div>
+      <div class="fund-pill"><div class="fund-pill-dot" style="background:#38bdf8"></div>Renaissance Tech</div>
+      <div class="fund-pill"><div class="fund-pill-dot" style="background:#72c0ff"></div>ARK Invest</div>
+    </div>
+  </div>
+
+  <div class="section-label animate d7"><h2>Tesis por posicion</h2></div>
+  <div class="positions-grid">
+    <div class="pos-card animate d7">
+      <div class="pos-header">
+        <div class="pos-ticker-block">
+          <div class="pos-badge" style="background:var(--accent-dim);color:var(--blue-sky);border:0.5px solid rgba(61,158,255,0.25)">Tecnologia / IA</div>
+          <div class="pos-name">META<small>Meta Platforms Inc.</small></div>
+        </div>
+        <div class="pos-price-block">
+          <div class="pos-price-label">Precio actual</div>
+          <div class="pos-price">~$600</div>
+          <div class="pos-alloc">20% del portafolio</div>
+        </div>
+      </div>
+      <p class="pos-tesis">Trading 27% debajo del ATH de $796 con fundamentos intactos: $201B ingresos 2025, margen operativo 41%, CERO analistas Sell entre 42 cubriendo el nombre. Advantage+ AI ad suite a $60B ARR. Instagram Plus (suscripcion) lanzado mar-2026. Q1 earnings el 29 de abril = catalizador clave.</p>
+      <div class="fund-tags">
+        <div class="fund-tag" style="color:#3d9eff;border-color:rgba(61,158,255,0.25);background:var(--accent-dim)">Citadel $1.44B posicion</div>
+        <div class="fund-tag" style="color:#72c0ff;border-color:rgba(114,192,255,0.25);background:var(--sky-dim)">ARK acumulando Q4</div>
+        <div class="fund-tag" style="color:#4ec9e8;border-color:rgba(78,201,232,0.25);background:var(--cyan-dim)">Bridgewater fintech pivot</div>
+      </div>
+    </div>
+    <div class="pos-card animate d7">
+      <div class="pos-header">
+        <div class="pos-ticker-block">
+          <div class="pos-badge" style="background:var(--cyan-dim);color:var(--cyan);border:0.5px solid rgba(78,201,232,0.25)">Semiconductores IA</div>
+          <div class="pos-name">MU<small>Micron Technology</small></div>
+        </div>
+        <div class="pos-price-block">
+          <div class="pos-price-label">Precio actual</div>
+          <div class="pos-price">~$379</div>
+          <div class="pos-alloc">15% del portafolio</div>
+        </div>
+      </div>
+      <p class="pos-tesis">EPS Q1 2026 de $12.20 vs estimado $9.19 (+33% beat). HBM4 co-disenado para NVIDIA Vera Rubin. DRAM ASPs +65% y NAND ASPs +77% secuencial. ATH reciente $471, pullback actual = entrada optima. 31 analistas Strong Buy, target $453.</p>
+      <div class="fund-tags">
+        <div class="fund-tag" style="color:#38bdf8;border-color:rgba(56,189,248,0.25);background:var(--sky-dim)">RenTec posicion top 3</div>
+        <div class="fund-tag" style="color:#3d9eff;border-color:rgba(61,158,255,0.25);background:var(--accent-dim)">Citadel acumulando</div>
+      </div>
+    </div>
+    <div class="pos-card animate d8">
+      <div class="pos-header">
+        <div class="pos-ticker-block">
+          <div class="pos-badge" style="background:var(--sky-dim);color:var(--sky);border:0.5px solid rgba(56,189,248,0.25)">Energia integrada</div>
+          <div class="pos-name">CVX<small>Chevron Corporation</small></div>
+        </div>
+        <div class="pos-price-block">
+          <div class="pos-price-label">Precio actual</div>
+          <div class="pos-price">~$199</div>
+          <div class="pos-alloc">15% del portafolio</div>
+        </div>
+      </div>
+      <p class="pos-tesis">Berkshire aumento posicion +6.63% en Q4 2025 (ahora 6.2% del portfolio BRK). FCF ajustado +35% en 2025. Acuerdo exclusivo Microsoft + Chevron para suministro electrico a data centers. Dividend yield ~4.5%. Target analistas $185-$205.</p>
+      <div class="fund-tags">
+        <div class="fund-tag" style="color:#7b8cff;border-color:rgba(123,140,255,0.25);background:var(--indigo-dim)">Berkshire +6.6% Q4 2025</div>
+        <div class="fund-tag" style="color:#3d9eff;border-color:rgba(61,158,255,0.25);background:var(--accent-dim)">Citadel top 5</div>
+      </div>
+    </div>
+    <div class="pos-card animate d8">
+      <div class="pos-header">
+        <div class="pos-ticker-block">
+          <div class="pos-badge" style="background:var(--indigo-dim);color:var(--indigo);border:0.5px solid rgba(123,140,255,0.25)">Financiero premium</div>
+          <div class="pos-name">AXP<small>American Express</small></div>
+        </div>
+        <div class="pos-price-block">
+          <div class="pos-price-label">Precio actual</div>
+          <div class="pos-price">~$300</div>
+          <div class="pos-alloc">15% del portafolio</div>
+        </div>
+      </div>
+      <p class="pos-tesis">Buffett no vendio ni una sola accion en 51 trimestres consecutivos. EPS guidance 2026: $17.75 (+15%). ROE proyectado: 51%. Trading ~$300, target consenso 12M: $365-$375 (upside ~24%).</p>
+      <div class="fund-tags">
+        <div class="fund-tag" style="color:#7b8cff;border-color:rgba(123,140,255,0.25);background:var(--indigo-dim)">Berkshire 51 trimestres hold</div>
+      </div>
+    </div>
+    <div class="pos-card animate d9">
+      <div class="pos-header">
+        <div class="pos-ticker-block">
+          <div class="pos-badge" style="background:var(--indigo-dim);color:var(--indigo);border:0.5px solid rgba(123,140,255,0.25)">Seguros P&amp;C</div>
+          <div class="pos-name">CB<small>Chubb Limited</small></div>
+        </div>
+        <div class="pos-price-block">
+          <div class="pos-price-label">Precio actual</div>
+          <div class="pos-price">~$290</div>
+          <div class="pos-alloc">10% del portafolio</div>
+        </div>
+      </div>
+      <p class="pos-tesis">Berkshire incremento +9.31% en Q4 2025, ahora con 8.5% de ownership. Aseguradora global P&amp;C con pricing power en ciclos inflacionarios. Defensiva con upside real. Target $290-$340.</p>
+      <div class="fund-tags">
+        <div class="fund-tag" style="color:#7b8cff;border-color:rgba(123,140,255,0.25);background:var(--indigo-dim)">Berkshire +9.3% Q4 (Greg Abel CEO)</div>
+      </div>
+    </div>
+    <div class="pos-card animate d9">
+      <div class="pos-header">
+        <div class="pos-ticker-block">
+          <div class="pos-badge" style="background:var(--sky-dim);color:var(--sky);border:0.5px solid rgba(56,189,248,0.25)">Infraestr. electrica AI</div>
+          <div class="pos-name">VST<small>Vistra Corp.</small></div>
+        </div>
+        <div class="pos-price-block">
+          <div class="pos-price-label">Precio actual</div>
+          <div class="pos-price">~$154</div>
+          <div class="pos-alloc">10% del portafolio</div>
+        </div>
+      </div>
+      <p class="pos-tesis">Bridgewater roto de CVX a VST en Q4 (+59% en posicion). 44 GW de capacidad de generacion, 5M clientes. Fitch upgrade a investment grade (mar-2026). EBITDA guidance 2030 &gt;$7.4B. Target analistas: $234 (+54% upside).</p>
+      <div class="fund-tags">
+        <div class="fund-tag" style="color:#4ec9e8;border-color:rgba(78,201,232,0.25);background:var(--cyan-dim)">Bridgewater +59% Q4 2025</div>
+        <div class="fund-tag" style="color:#38bdf8;border-color:rgba(56,189,248,0.25);background:var(--sky-dim)">Meta AI power partnership</div>
+      </div>
+    </div>
+    <div class="pos-card full-width animate d9">
+      <div class="pos-header">
+        <div class="pos-ticker-block">
+          <div class="pos-badge" style="background:rgba(61,158,255,0.1);color:var(--blue-pale);border:0.5px solid rgba(61,158,255,0.3)">ETF Ancla · Dividendos</div>
+          <div class="pos-name">SCHD<small>Schwab US Dividend Equity ETF</small></div>
+        </div>
+        <div class="pos-price-block">
+          <div class="pos-price-label">Yield aprox.</div>
+          <div class="pos-price">~3.6%</div>
+          <div class="pos-alloc">15% del portafolio</div>
+        </div>
+      </div>
+      <p class="pos-tesis">Ancla de estabilidad y generador de flujo de caja. Diversifica exposure hacia blue chips de dividendos reduciendo la volatilidad total del portafolio. Los aportes mensuales de $2,000 se vehiculizan primero aqui antes de rebalancear.</p>
+      <div class="fund-tags">
+        <div class="fund-tag" style="color:var(--accent);border-color:rgba(61,158,255,0.25);background:var(--accent-dim)">Dividend compounder</div>
+        <div class="fund-tag" style="color:var(--accent);border-color:rgba(61,158,255,0.25);background:var(--accent-dim)">Baja volatilidad</div>
+        <div class="fund-tag" style="color:var(--accent);border-color:rgba(61,158,255,0.25);background:var(--accent-dim)">Vehiculo de aportes mensuales</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label animate d9"><h2>Precio actual · Target 24M · Riesgo</h2></div>
+  <div class="table-wrap animate d9">
+    <table>
+      <thead>
+        <tr><th>Ticker</th><th>Precio actual</th><th>Target 24M</th><th>Potencial</th><th>Riesgo</th><th>Rating</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="t-ticker">META</td><td class="t-price">~$600</td><td class="t-target">$850-$950</td><td class="t-up">+42-58%</td>
+          <td><div class="risk-bar"><div class="risk-dots"><div class="risk-dot" style="background:var(--red)"></div><div class="risk-dot" style="background:var(--red)"></div><div class="risk-dot" style="background:var(--red)"></div><div class="risk-dot" style="background:var(--surface3)"></div></div><span class="risk-label">Alto</span></div></td>
+          <td><span class="rating-chip" style="color:var(--blue-sky);border-color:rgba(61,158,255,0.3);background:var(--accent-dim)">Strong Buy</span></td>
+        </tr>
+        <tr>
+          <td class="t-ticker">MU</td><td class="t-price">~$379</td><td class="t-target">$500-$600</td><td class="t-up">+32-58%</td>
+          <td><div class="risk-bar"><div class="risk-dots"><div class="risk-dot" style="background:var(--amber)"></div><div class="risk-dot" style="background:var(--amber)"></div><div class="risk-dot" style="background:var(--amber)"></div><div class="risk-dot" style="background:var(--surface3)"></div></div><span class="risk-label">Medio-Alto</span></div></td>
+          <td><span class="rating-chip" style="color:var(--cyan);border-color:rgba(78,201,232,0.3);background:var(--cyan-dim)">Strong Buy</span></td>
+        </tr>
+        <tr>
+          <td class="t-ticker">CVX</td><td class="t-price">~$199</td><td class="t-target">$215-$235</td><td class="t-up">+8-18%</td>
+          <td><div class="risk-bar"><div class="risk-dots"><div class="risk-dot" style="background:var(--green)"></div><div class="risk-dot" style="background:var(--surface3)"></div><div class="risk-dot" style="background:var(--surface3)"></div><div class="risk-dot" style="background:var(--surface3)"></div></div><span class="risk-label">Bajo</span></div></td>
+          <td><span class="rating-chip" style="color:var(--green);border-color:rgba(56,217,169,0.3);background:var(--green-dim)">Buy + Dividendo</span></td>
+        </tr>
+        <tr>
+          <td class="t-ticker">AXP</td><td class="t-price">~$300</td><td class="t-target">$370-$420</td><td class="t-up">+23-40%</td>
+          <td><div class="risk-bar"><div class="risk-dots"><div class="risk-dot" style="background:var(--green)"></div><div class="risk-dot" style="background:var(--green)"></div><div class="risk-dot" style="background:var(--surface3)"></div><div class="risk-dot" style="background:var(--surface3)"></div></div><span class="risk-label">Bajo-Medio</span></div></td>
+          <td><span class="rating-chip" style="color:var(--indigo);border-color:rgba(123,140,255,0.3);background:var(--indigo-dim)">Hold / Buy</span></td>
+        </tr>
+        <tr>
+          <td class="t-ticker">CB</td><td class="t-price">~$290</td><td class="t-target">$310-$340</td><td class="t-up">+7-17%</td>
+          <td><div class="risk-bar"><div class="risk-dots"><div class="risk-dot" style="background:var(--green)"></div><div class="risk-dot" style="background:var(--surface3)"></div><div class="risk-dot" style="background:var(--surface3)"></div><div class="risk-dot" style="background:var(--surface3)"></div></div><span class="risk-label">Bajo</span></div></td>
+          <td><span class="rating-chip" style="color:var(--green);border-color:rgba(56,217,169,0.3);background:var(--green-dim)">Buy Defensivo</span></td>
+        </tr>
+        <tr>
+          <td class="t-ticker">VST</td><td class="t-price">~$154</td><td class="t-target">$220-$270</td><td class="t-up">+43-75%</td>
+          <td><div class="risk-bar"><div class="risk-dots"><div class="risk-dot" style="background:var(--red)"></div><div class="risk-dot" style="background:var(--red)"></div><div class="risk-dot" style="background:var(--red)"></div><div class="risk-dot" style="background:var(--surface3)"></div></div><span class="risk-label">Alto</span></div></td>
+          <td><span class="rating-chip" style="color:var(--sky);border-color:rgba(56,189,248,0.3);background:var(--sky-dim)">Buy Oportunista</span></td>
+        </tr>
+        <tr>
+          <td class="t-ticker">SCHD</td><td class="t-price">~$27</td><td class="t-target">$30-$33</td>
+          <td class="t-up">+11-22% <span style="font-size:10px;color:var(--text3)">+divs</span></td>
+          <td><div class="risk-bar"><div class="risk-dots"><div class="risk-dot" style="background:var(--green)"></div><div class="risk-dot" style="background:var(--surface3)"></div><div class="risk-dot" style="background:var(--surface3)"></div><div class="risk-dot" style="background:var(--surface3)"></div></div><span class="risk-label">Muy bajo</span></div></td>
+          <td><span class="rating-chip" style="color:var(--blue-sky);border-color:rgba(114,192,255,0.3);background:rgba(114,192,255,0.08)">Core Hold</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label animate d10"><h2>Escenarios a 24 meses</h2></div>
+  <div class="scenarios-grid animate d10">
+    <div class="scenario-card">
+      <div class="sc-header">
+        <div class="sc-icon" style="background:var(--green-dim)">&#9650;</div>
+        <div class="sc-title" style="color:var(--green)">Alcista</div>
+      </div>
+      <div class="sc-return" style="color:var(--green)">+45-65%</div>
+      <p class="sc-desc">META rota hacia nuevos ATH post-Q1 earnings. MU HBM4 captura 30%+ del mercado de memory AI. VST firma contratos adicionales con hyperscalers. Fed recorta 2-3 veces.</p>
+      <div class="sc-capital" style="background:var(--green-dim);color:var(--green)">Capital proyectado: ~$91,000</div>
+    </div>
+    <div class="scenario-card base-case">
+      <div class="sc-header">
+        <div class="sc-icon" style="background:var(--accent-dim)">&#9670;</div>
+        <div class="sc-title" style="color:var(--blue-sky)">Base</div>
+      </div>
+      <div class="sc-return" style="color:var(--blue-sky)">+20-35%</div>
+      <p class="sc-desc">Economia se expande moderadamente. META recupera $750-$800. MU consolida ciclo de memoria. CVX y AXP compoundan dividendos. Objetivo de +3 pts cumplido.</p>
+      <div class="sc-capital" style="background:var(--accent-dim);color:var(--blue-sky)">Capital proyectado: ~$78,000-$84,000</div>
+    </div>
+    <div class="scenario-card">
+      <div class="sc-header">
+        <div class="sc-icon" style="background:var(--red-dim)">&#9660;</div>
+        <div class="sc-title" style="color:var(--red)">Bajista</div>
+      </div>
+      <div class="sc-return" style="color:var(--red)">&minus;5 a +8%</div>
+      <p class="sc-desc">Recesion leve 2026. META golpeada por lawsuits estructurales. Oversupply DRAM colapsa precios MU. CVX, CB y SCHD amortiguan el portafolio.</p>
+      <div class="sc-capital" style="background:var(--red-dim);color:var(--red)">Capital proyectado: ~$62,000-$68,000</div>
+    </div>
+  </div>
+
+  <div class="disclaimer animate d10">
+    Analisis elaborado por Daniel Muvdi — Trading Coach. Basado en 13F filings Q4 2025 (Berkshire Hathaway, Bridgewater Associates, Renaissance Technologies, Citadel Advisors, ARK Invest) y datos de analistas al 8 de abril de 2026.
+    No constituye asesoria financiera. Precios actuales sujetos a variacion de mercado.
+    Consulta un asesor financiero certificado antes de tomar decisiones de inversion.
+  </div>
+
+</div>
+</body>
+</html>
