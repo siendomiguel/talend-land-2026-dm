@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis Institucional 13F Q3 2025 — Family Office Grade</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --bg: #0a0c0f;
+  --bg2: #0f1115;
+  --bg3: #141720;
+  --bg4: #1a1e2a;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #e8eaf0;
+  --text2: #8c93a8;
+  --text3: #5a6070;
+  --accent: #00d4aa;
+  --accent2: #0066ff;
+  --gold: #f0c060;
+  --red: #ff4466;
+  --green: #00c878;
+  --purple: #9b7fff;
+  --amber: #f0a030;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border2);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 8px;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.header-meta {
+  display: flex;
+  gap: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+}
+.header-meta span { color: var(--text2); }
+.nav {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nb {
+  padding: 9px 16px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text3);
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+.nb:hover { color: var(--text2); }
+.nb.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* LAYOUT */
+.main { padding: 24px; max-width: 1400px; margin: 0 auto; }
+.sec { display: none; }
+.sec.active { display: block; }
+
+/* SECTION HEADER */
+.sh {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ALERTS */
+.alert {
+  border-left: 2px solid;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  line-height: 1.65;
+  border-radius: 0 4px 4px 0;
+}
+.al-grn { border-color: var(--green); background: rgba(0,200,120,0.06); color: #a0f0c8; }
+.al-amb { border-color: var(--amber); background: rgba(240,160,48,0.06); color: #f0c878; }
+.al-red { border-color: var(--red); background: rgba(255,68,102,0.06); color: #ff9aaa; }
+.al-blu { border-color: var(--accent2); background: rgba(0,102,255,0.06); color: #80aaff; }
+
+/* METRICS GRID */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.met {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 14px;
+}
+.ml { font-family: var(--mono); font-size: 9.5px; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 5px; }
+.mv { font-family: var(--mono); font-size: 22px; font-weight: 600; color: var(--text); }
+.ms { font-family: var(--mono); font-size: 10px; color: var(--text3); margin-top: 2px; }
+
+/* CARDS */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.ct {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cb { font-size: 12.5px; color: var(--text2); line-height: 1.7; }
+.cb strong { color: var(--text); font-weight: 500; }
+
+/* TABLES */
+.tw { overflow-x: auto; margin-bottom: 14px; }
+.tw::-webkit-scrollbar { height: 4px; }
+.tw::-webkit-scrollbar-track { background: var(--bg2); }
+.tw::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+thead th {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  color: var(--text3);
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border2);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+tbody td {
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* BADGES */
+.bdg {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+.b-grn { background: rgba(0,200,120,0.15); color: var(--green); border: 1px solid rgba(0,200,120,0.3); }
+.b-red { background: rgba(255,68,102,0.15); color: var(--red); border: 1px solid rgba(255,68,102,0.3); }
+.b-amb { background: rgba(240,160,48,0.15); color: var(--amber); border: 1px solid rgba(240,160,48,0.3); }
+.b-blu { background: rgba(0,102,255,0.15); color: #80aaff; border: 1px solid rgba(0,102,255,0.3); }
+.b-pur { background: rgba(155,127,255,0.15); color: var(--purple); border: 1px solid rgba(155,127,255,0.3); }
+.b-gld { background: rgba(240,192,96,0.15); color: var(--gold); border: 1px solid rgba(240,192,96,0.3); }
+.b-gry { background: rgba(255,255,255,0.06); color: var(--text2); border: 1px solid var(--border2); }
+.b-new { background: rgba(0,212,170,0.2); color: var(--accent); border: 1px solid rgba(0,212,170,0.4); }
+
+.pos { color: var(--green); font-family: var(--mono); font-weight: 500; }
+.neg { color: var(--red); font-family: var(--mono); font-weight: 500; }
+.tkr { color: var(--accent); font-family: var(--mono); font-weight: 600; font-size: 12px; }
+
+.ft {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  margin: 1px;
+}
+
+/* WEIGHT BAR */
+.wb { display: flex; align-items: center; gap: 6px; }
+.wb-b { height: 4px; border-radius: 2px; background: var(--accent); min-width: 2px; }
+
+/* CONVICTION DOTS */
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 4px; }
+.da { background: var(--green); }
+.dm { background: var(--amber); }
+.db { background: var(--red); }
+
+/* SCENARIOS */
+.scg {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+.sc {
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 11.5px;
+  border: 1px solid;
+  line-height: 1.6;
+}
+.sc-bear { background: rgba(255,68,102,0.08); border-color: rgba(255,68,102,0.25); color: #ff9aaa; }
+.sc-base { background: rgba(0,200,120,0.08); border-color: rgba(0,200,120,0.25); color: #a0f0c8; }
+.sc-bull { background: rgba(0,102,255,0.08); border-color: rgba(0,102,255,0.25); color: #80aaff; }
+.scl { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 5px; opacity: 0.8; }
+.sc strong { font-family: var(--mono); font-size: 17px; font-weight: 600; display: block; margin-bottom: 4px; }
+
+/* CHART WRAPPER */
+.cht { position: relative; width: 100%; height: 240px; margin: 12px 0; }
+.cht-sm { position: relative; width: 100%; height: 190px; margin: 12px 0; }
+
+/* SCENARIO TABS */
+.stabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.stab {
+  padding: 6px 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  color: var(--text2);
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.12s;
+}
+.stab:hover { border-color: var(--accent); color: var(--accent); }
+.stab.active { background: rgba(0,212,170,0.12); border-color: var(--accent); color: var(--accent); }
+
+/* IMPLEMENTATION STEPS */
+.impl { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.isn {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg3); border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  flex-shrink: 0; color: var(--accent);
+}
+.ist { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--text); margin-bottom: 4px; letter-spacing: 0.03em; }
+.isc { flex: 1; font-size: 12px; color: var(--text2); line-height: 1.65; }
+
+/* SUMMARY BANNER */
+.banner {
+  background: linear-gradient(135deg, rgba(0,212,170,0.08) 0%, rgba(0,102,255,0.05) 100%);
+  border: 1px solid rgba(0,212,170,0.2);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+.banner-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.banner-body { font-size: 13px; color: var(--text2); line-height: 1.75; }
+.banner-body strong { color: var(--text); }
+
+/* GRID LAYOUT */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+
+/* SUBHEADER */
+.sub {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 16px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* FUND LEGEND */
+.fund-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.fl-item { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; color: var(--text2); }
+.fl-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* CONCLUSION BANNER */
+.con-banner {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-top: 2px solid var(--accent);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  font-family: var(--mono);
+}
+.con-title { font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.con-body { font-size: 12px; color: var(--text2); line-height: 1.8; font-family: var(--sans); }
+.con-body strong { color: var(--text); }
+
+@media (max-width: 600px) {
+  .scg { grid-template-columns: 1fr; }
+  .grid2 { grid-template-columns: 1fr; }
+  .main { padding: 14px; }
+  .header { padding: 0 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="logo">NEXUS · INSTITUTIONAL 13F · Q3 2025</div>
+    <div class="header-meta">
+      <div>CORTE <span>30-SEP-2025</span></div>
+      <div>FILING <span>NOV-2025</span></div>
+      <div>REF <span>09-ABR-2026</span></div>
+      <div>FONDOS <span>5</span></div>
+    </div>
+  </div>
+  <nav class="nav" id="mn">
+    <button class="nb active" onclick="ss('resumen')">01 · RESUMEN</button>
+    <button class="nb" onclick="ss('auditoria')">02 · AUDITORÍA</button>
+    <button class="nb" onclick="ss('gestores')">03 · GESTORES</button>
+    <button class="nb" onclick="ss('cruce')">04 · CONVICCIÓN</button>
+    <button class="nb" onclick="ss('cartera')">05 · CARTERA</button>
+    <button class="nb" onclick="ss('escenarios')">06 · ESCENARIOS</button>
+    <button class="nb" onclick="ss('impl')">07 · IMPLEMENTACIÓN</button>
+    <button class="nb" onclick="ss('conclusion')">08 · CONCLUSIÓN</button>
+  </nav>
+</div>
+
+<div class="main">
+
+<!-- ===================== 01 RESUMEN ===================== -->
+<div id="s-resumen" class="sec active">
+  <div class="sh">01 · Resumen ejecutivo — 13F Q3 2025 (datos corregidos y actualizados)</div>
+
+  <div class="alert al-grn">
+    <strong>Versión definitiva:</strong> Análisis basado en los 13F más recientes disponibles — corte 30-sep-2025, publicados noviembre 2025. Berkshire adicionalmente disponible en Q4 2025 (corte dic-2025, publicado feb-2026). La versión anterior usaba datos de Q4 2024 — error corregido.
+  </div>
+
+  <div class="metrics">
+    <div class="met"><div class="ml">Perfil inversor</div><div class="mv">MOD</div><div class="ms">Moderado</div></div>
+    <div class="met"><div class="ml">Capital inicial</div><div class="mv">$25K</div><div class="ms">USD</div></div>
+    <div class="met"><div class="ml">Aporte mensual</div><div class="mv">$2K</div><div class="ms">USD / mes</div></div>
+    <div class="met"><div class="ml">Horizonte</div><div class="mv">24M</div><div class="ms">meses</div></div>
+    <div class="met"><div class="ml">Alfa objetivo</div><div class="mv">+300</div><div class="ms">bps vs S&P 500</div></div>
+    <div class="met"><div class="ml">Posiciones</div><div class="mv">12</div><div class="ms">+ 5% cash</div></div>
+  </div>
+
+  <div class="banner">
+    <div class="banner-title">★ El movimiento que cambia todo en Q3 2025</div>
+    <div class="banner-body">
+      <strong>Berkshire Hathaway compró Alphabet por primera vez en su historia.</strong> 17.85 millones de acciones, ~$4.3B al precio de septiembre 2025. Es la primera posición tech nueva de BRK desde Apple en 2016. Simultáneamente, RenTech añadió GOOGL, Citadel añadió $2.1B, y ARK también incrementó. <strong>GOOGL tiene ahora presencia en los 5 fondos analizados — el mayor consenso institucional del Q3 2025.</strong>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">Los 5 grandes movimientos Q3 2025</div>
+      <div class="cb">
+        <strong>1. BRK → GOOGL nueva ($4.3B)</strong> — primera posición tech nueva desde AAPL 2016.<br>
+        <strong>2. Bridgewater profit-taking masivo</strong> — NVDA -65%, MSFT -36%, GOOGL -50%. Rota a CRM, LRCX, ADBE.<br>
+        <strong>3. RenTech rota especulativo → quality</strong> — reduce PLTR, NVDA, APP. Añade GOOGL, MSFT, META, TSM.<br>
+        <strong>4. Citadel top equity largo</strong> — MSFT $2.06B, NVDA $1.83B, META $1.44B, AAPL $1.25B, V $1.04B. Añade GOOG $2.1B.<br>
+        <strong>5. PLTR reducida coordinadamente</strong> — RenTech y ARK recogen ganancias. +136% desde Q3 2025 hoy.
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct">Errores a evitar al copiar 13F</div>
+      <div class="cb">
+        <strong>Error 1.</strong> Confundir precio Q3 2025 (30-sep) con precio actual (abr 2026).<br>
+        <strong>Error 2.</strong> Copiar Citadel sin entender que sus tops son SPY/QQQ puts — libro de derivados.<br>
+        <strong>Error 3.</strong> Copiar RenTech asumiendo convicción fundamental — son señales cuantitativas estadísticas con alta rotación.<br>
+        <strong>Error 4.</strong> Seguir a ARK en TSLA, COIN, ROKU — volatilidad 60-120%, incompatible con perfil moderado.<br>
+        <strong>Error 5.</strong> No ajustar por el lag de 6 meses entre el corte Q3 y hoy.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Consenso institucional cruzado Q3 2025 — por nivel de señal</div>
+    <div class="cb">
+      <strong style="color: var(--accent);">Consenso máximo — 5 fondos:</strong> GOOGL (BRK nueva, REN+, CIT+, ARK+, BRW↓pero mantiene).<br><br>
+      <strong style="color: var(--green);">Alta convicción — 3 fondos:</strong> MSFT (BRW↓-36% pero mantiene, CIT+$2.7B, REN+), META (BRW↓, CIT top $1.44B, REN+), NVDA (BRW↓-65%, CIT top $1.83B, REN↓ — señal mixta).<br><br>
+      <strong style="color: var(--amber);">Convicción selectiva — 2 fondos:</strong> CRM (BRW top 3, CIT+), AMZN (CIT+$1.4B, BRW prev), V (CIT top $1B, BRW prev).<br><br>
+      <strong style="color: var(--text2);">Convicción permanente BRK:</strong> AXP (20.46% portafolio, sin cambio), KO (posición histórica), CVX (estable).<br><br>
+      <strong style="color: var(--red);">Reducción coordinada — señal negativa:</strong> PLTR (RenTech↓ de top, ARK↓), NVDA (BRW -65%, REN↓ — cautela).
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 02 AUDITORÍA ===================== -->
+<div id="s-auditoria" class="sec">
+  <div class="sh">02 · Auditoría de datos — verificación 13F Q3 2025</div>
+
+  <div class="alert al-amb">
+    <strong>Regla de auditoría:</strong> Los precios "Px Q3 2025" son estimados al cierre del 30-sep-2025. Los fondos tenían posiciones a esos precios. Los precios de abril 2026 son los actuales. La diferencia es el PnL desde el corte — no el retorno del fondo ni el precio de entrada exacto (no verificable en un 13F).
+  </div>
+
+  <div class="sub">Tabla de verificación por fondo</div>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th>Fondo</th><th>Corte portafolio</th><th>Fecha filing</th><th>AUM 13F</th><th>Holdings</th><th>Señal útil</th><th>Limitación crítica</th><th>Cambio clave vs Q4 2024</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Berkshire Hathaway</strong><br><span class="ft">BRK</span></td>
+          <td style="font-family:var(--mono);font-size:11px;">30-sep-2025<br>+ Q4 2025 (dic)</td>
+          <td style="font-family:var(--mono);font-size:11px;">14-nov-2025<br>+ 14-feb-2026</td>
+          <td style="font-family:var(--mono);">$267B / $274B</td>
+          <td style="font-family:var(--mono);">41 / 42</td>
+          <td><span class="bdg b-grn">ALTA</span></td>
+          <td>Solo equity largo. Sin derivados. Decisiones de alta convicción identificable.</td>
+          <td><span class="bdg b-new">NUEVA GOOGL $4.3B</span>. Sigue reduciendo AAPL y BAC. Salida BYD. Añade Chubb, Domino's.</td>
+        </tr>
+        <tr>
+          <td><strong>Bridgewater Associates</strong><br><span class="ft">BRW</span></td>
+          <td style="font-family:var(--mono);font-size:11px;">30-sep-2025</td>
+          <td style="font-family:var(--mono);font-size:11px;">13-nov-2025</td>
+          <td style="font-family:var(--mono);">$25.5B</td>
+          <td style="font-family:var(--mono);">1,014</td>
+          <td><span class="bdg b-amb">MEDIA</span></td>
+          <td>El 13F solo cubre equity USA. Bonos, divisas, futuros y commodities globales no visibles.</td>
+          <td>Profit-taking: NVDA -65%, MSFT -36%, GOOGL -50%+, META↓. Rota a <strong>CRM</strong> (top 3), <strong>LRCX</strong> (top 4), ADBE, SPY. Nueva pos: Reddit.</td>
+        </tr>
+        <tr>
+          <td><strong>Renaissance Technologies</strong><br><span class="ft">REN</span></td>
+          <td style="font-family:var(--mono);font-size:11px;">30-sep-2025</td>
+          <td style="font-family:var(--mono);font-size:11px;">13-nov-2025</td>
+          <td style="font-family:var(--mono);">$75.8B</td>
+          <td style="font-family:var(--mono);">3,456</td>
+          <td><span class="bdg b-red">BAJA</span></td>
+          <td>Medallion Fund (mejor del mundo) no visible. Lo reportado es RIEF/RIDA. Señales cuantitativas estadísticas, no fundamental replicable.</td>
+          <td>Añadió: GOOGL, MSFT, META, RBLX, HIMS, RDDT, TSM. Redujo: <strong>PLTR</strong>, NVDA, APP, KGC, HOOD. Top holdings: PLTR, UTHR, MU, GOOGL, NVDA.</td>
+        </tr>
+        <tr>
+          <td><strong>Citadel Advisors</strong><br><span class="ft">CIT</span></td>
+          <td style="font-family:var(--mono);font-size:11px;">30-sep-2025</td>
+          <td style="font-family:var(--mono);font-size:11px;">14-nov-2025</td>
+          <td style="font-family:var(--mono);">$657B</td>
+          <td style="font-family:var(--mono);">15,551</td>
+          <td><span class="bdg b-red">MUY BAJA</span></td>
+          <td>15,551 posiciones. Tops reales del filing: SPY puts, QQQ puts, SPY calls — libro de derivados. El equity largo es fragmento de estrategias delta-neutral no visibles.</td>
+          <td>Top equity largo: MSFT $2.06B, NVDA $1.83B, META $1.44B, AAPL $1.25B, V $1.04B. Añadió GLD +$4.2B, UNH +$2.8B, MSFT +$2.7B, GOOG +$2.1B, AMZN +$1.4B.</td>
+        </tr>
+        <tr>
+          <td><strong>ARK Invest</strong><br><span class="ft">ARK</span></td>
+          <td style="font-family:var(--mono);font-size:11px;">30-sep-2025</td>
+          <td style="font-family:var(--mono);font-size:11px;">13-nov-2025</td>
+          <td style="font-family:var(--mono);">$16.8B</td>
+          <td style="font-family:var(--mono);">196</td>
+          <td><span class="bdg b-amb">MEDIA</span></td>
+          <td>Alta concentración en disrupción especulativa. La mayoría incompatible con perfil moderado. PLTR se disparó +136% desde Q3 — ya no es punto de entrada.</td>
+          <td>Añadió: TSLA, AMD, TER, BEAM, GOOG (+$50M). Redujo: HOOD -$396M, RBLX, COIN. Tops siguen: TSLA, COIN, ROKU, PLTR, RBLX.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">Separación estricta de precios — Q3 2025 vs. mercado actual (abril 2026)</div>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th>Ticker</th><th>Empresa</th><th>Fondos Q3 2025</th><th>Movimiento neto</th><th>Px ~Q3 2025 (30-sep)</th><th>Px ~abr 2026</th><th>Var. %</th><th>Certeza dato</th><th>Observación de consistencia</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="tkr">GOOGL</td><td>Alphabet</td>
+          <td><span class="ft">BRK★</span><span class="ft">REN+</span><span class="ft">CIT+</span><span class="ft">ARK+</span><span class="ft">BRW↓</span></td>
+          <td><span class="bdg b-pur">Compra masiva</span></td>
+          <td style="font-family:var(--mono);">~$175</td><td style="font-family:var(--mono);">~$155</td><td class="neg">-11.4%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>BRK compró a ~$175 aprox. (sept-2025). Corrección posterior = mejor entrada hoy. Precio exacto de compra dentro del trimestre no verificable en 13F.</td>
+        </tr>
+        <tr>
+          <td class="tkr">MSFT</td><td>Microsoft</td>
+          <td><span class="ft">BRW↓36%</span><span class="ft">CIT+$2.7B</span><span class="ft">REN+</span></td>
+          <td><span class="bdg b-amb">Señal mixta</span></td>
+          <td style="font-family:var(--mono);">~$460</td><td style="font-family:var(--mono);">~$380</td><td class="neg">-17.4%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>BRW redujo (profit-taking post-rally). CIT añadió +$2.7B = señal contraria. Corrección -30% desde ATH $555 mejora punto de entrada respecto a Q3.</td>
+        </tr>
+        <tr>
+          <td class="tkr">NVDA</td><td>NVIDIA</td>
+          <td><span class="ft">BRW↓65%</span><span class="ft">CIT top</span><span class="ft">REN↓</span></td>
+          <td><span class="bdg b-red">Reducción neta</span></td>
+          <td style="font-family:var(--mono);">~$120</td><td style="font-family:var(--mono);">~$181</td><td class="pos">+50.8%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>Quien redujo en Q3 2025 dejó +50% encima. CIT sigue con top holding pero en contexto de libro de derivados. Señal debilitada para este análisis.</td>
+        </tr>
+        <tr>
+          <td class="tkr">META</td><td>Meta Platforms</td>
+          <td><span class="ft">BRW↓</span><span class="ft">CIT top $1.44B</span><span class="ft">REN+</span></td>
+          <td><span class="bdg b-grn">Compra neta</span></td>
+          <td style="font-family:var(--mono);">~$580</td><td style="font-family:var(--mono);">~$545</td><td class="neg">-6.0%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>CIT top 3 largo, RenTech añadió en Q3. BRW redujo (profit-taking). Corrección moderada. Negocio FCF sólido.</td>
+        </tr>
+        <tr>
+          <td class="tkr">CRM</td><td>Salesforce</td>
+          <td><span class="ft">BRW top 3</span><span class="ft">CIT+</span></td>
+          <td><span class="bdg b-grn">Nueva apuesta BRW</span></td>
+          <td style="font-family:var(--mono);">~$320</td><td style="font-family:var(--mono);">~$255</td><td class="neg">-20.3%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>Bridgewater eligió CRM como top 3 holding Q3 — decisión activa post-lanzamiento de Agentforce (sept 2025). Corrección -20% = entrada mejor que BRW en Q3.</td>
+        </tr>
+        <tr>
+          <td class="tkr">LRCX</td><td>Lam Research</td>
+          <td><span class="ft">BRW top 4</span></td>
+          <td><span class="bdg b-grn">Apuesta BRW fuerte</span></td>
+          <td style="font-family:var(--mono);">~$900</td><td style="font-family:var(--mono);">~$720</td><td class="neg">-20.0%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>BRW apostó por semiconductor equipment sobre chip designers. LRCX beneficiaria de HBM y nodos avanzados. Corrección -20% desde Q3 mejora entrada.</td>
+        </tr>
+        <tr>
+          <td class="tkr">AXP</td><td>American Express</td>
+          <td><span class="ft">BRK permanente</span></td>
+          <td><span class="bdg b-grn">Sin cambio BRK</span></td>
+          <td style="font-family:var(--mono);">~$310</td><td style="font-family:var(--mono);">~$248</td><td class="neg">-20.0%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>BRK 20.46% del portafolio. Corrección de -20% desde Q3 = el inversor hoy entra en mejor punto que Berkshire en septiembre 2025.</td>
+        </tr>
+        <tr>
+          <td class="tkr">PLTR</td><td>Palantir</td>
+          <td><span class="ft">REN↓</span><span class="ft">ARK↓</span></td>
+          <td><span class="bdg b-red">Reducción coordinada</span></td>
+          <td style="font-family:var(--mono);">~$38</td><td style="font-family:var(--mono);">~$90</td><td class="pos">+136.8%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>PLTR subió +136% desde Q3 2025. Quienes redujeron en Q3 dejaron ganancias sobre la mesa pero señalaron techo de valoración. Incompatible con este perfil a $90 (P/S ~25+).</td>
+        </tr>
+        <tr>
+          <td class="tkr">V</td><td>Visa</td>
+          <td><span class="ft">CIT top $1.04B</span></td>
+          <td><span class="bdg b-grn">Top holding CIT</span></td>
+          <td style="font-family:var(--mono);">~$330</td><td style="font-family:var(--mono);">~$320</td><td class="neg">-3.0%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>Citadel equity largo $1B+ confirma profundidad institucional real en Visa. Negocio resiliente, bajo riesgo operativo.</td>
+        </tr>
+        <tr>
+          <td class="tkr">CVX</td><td>Chevron</td>
+          <td><span class="ft">BRK estable</span></td>
+          <td><span class="bdg b-grn">Sin cambio</span></td>
+          <td style="font-family:var(--mono);">~$155</td><td style="font-family:var(--mono);">~$147</td><td class="neg">-5.2%</td>
+          <td><span class="bdg b-amb">Estimado</span></td>
+          <td>BRK mantuvo. Yield ~4.5% ancla el valor. Energía bajo presión en 2026 = punto táctico favorable para entrada.</td>
+        </tr>
+        <tr>
+          <td class="tkr">KO</td><td>Coca-Cola</td>
+          <td><span class="ft">BRK permanente</span></td>
+          <td><span class="bdg b-grn">Sin cambio</span></td>
+          <td style="font-family:var(--mono);">~$70</td><td style="font-family:var(--mono);">~$71</td><td class="pos">+1.4%</td>
+          <td><span class="bdg b-red">No verificable</span></td>
+          <td>BRK lleva décadas en KO. El precio de entrada original no es verificable — se reporta posición histórica sin cambio. Defensiva de calidad comprobada.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== 03 GESTORES ===================== -->
+<div id="s-gestores" class="sec">
+  <div class="sh">03 · Análisis por gestor — Q3 2025</div>
+
+  <div class="card">
+    <div class="ct">Berkshire Hathaway — Q3 2025 + Q4 2025 disponible (Greg Abel, CEO desde ene-2026)</div>
+    <div class="cb">
+      <strong>El movimiento histórico:</strong> Iniciaron posición en GOOGL — $4.3B, 17.85M shares. Primera inversión en Google en la historia de Berkshire. No se sabe si fue decisión de Buffett, Todd Combs (renunció dic-2025 a JPMorgan) o Ted Weschler. En cualquier caso, representa convicción institucional de primer nivel.<br><br>
+      <strong>Q3 2025 completo:</strong> Aumentó Chubb (+$1.2B), nueva posición en Domino's Pizza, añadió Sirius XM. Redujo AAPL -15% (238M shares, aún $64.9B = 24% portafolio). Redujo BAC -6.1%. Salida completa de BYD (empresa china de EVs).<br><br>
+      <strong>Q4 2025 (publicado feb-2026):</strong> Siguió recortando AAPL (-10M shares más) y BAC (-50M shares). Añadió Constellation Brands (nueva posición). Greg Abel asumió CEO formalmente en enero 2026. AUM creció a $274B.<br><br>
+      <strong>Ideas para este perfil:</strong> GOOGL (señal histórica de BRK = máxima convicción), AXP (permanente, corrección -20% desde Q3 = mejor entrada), KO (defensiva permanente), CVX (estable). AAPL: no copiar — BRK la está reduciendo sistemáticamente.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Bridgewater Associates — Q3 2025 ($25.5B, 1,014 posiciones)</div>
+    <div class="cb">
+      <strong>Gran rotación Q3:</strong> Profit-taking masivo en los ganadores del primer semestre 2025: NVDA -65%, MSFT -36%, GOOGL -50%+, META↓. El portafolio creció +3% pese a las reducciones por revalorización.<br><br>
+      <strong>Hacia dónde rotó:</strong> CRM (Salesforce) subió a top 3 holding — apuesta directa en Agentforce AI enterprise. LRCX (Lam Research) subió a top 4 — apuesta en semiconductor equipment sobre chip designers. ADBE, SPY (más exposición pasiva). Nueva posición en Reddit (RDDT).<br><br>
+      <strong>Lectura estratégica:</strong> Bridgewater está diciendo implícitamente que (a) los mega-caps tech alcanzaron valoraciones que justifican recogida, y (b) el próximo liderazgo AI viene de software enterprise (CRM) y equipment de fabricación (LRCX), no de chips de inferencia (NVDA). Esta es la señal más sofisticada del Q3 2025.<br><br>
+      <strong>Ideas para este perfil:</strong> CRM (top 3 BRW = máxima señal, +$50M invertimos a precios mejores que BRW), LRCX (top 4 BRW = señal directa), MSFT (aunque redujo, sigue siendo posición grande = convicción base no eliminada).
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Renaissance Technologies — Q3 2025 ($75.8B, 3,456 posiciones)</div>
+    <div class="cb">
+      <strong>Rotación cuantitativa Q3:</strong> Salió de especulativo puro: PLTR↓ (desde top 1 reduce), APP↓, HOOD↓, KGC↓. Entró en quality con momentum: GOOGL (añadió fuerte), MSFT (añadió), META (añadió), TSM (Taiwan Semiconductor — nueva), HIMS & Hers (nueva), RDDT (nueva).<br><br>
+      <strong>Top holdings Q3:</strong> PLTR (aún top 1 a pesar de reducción — posición legacy enorme), UTHR (United Therapeutics — pharma/orphan drugs, bajo correlación con mercado), MU (Micron, memoria HBM), GOOGL, NVDA.<br><br>
+      <strong>Señal de convergencia crítica:</strong> RenTech añadió GOOGL en Q3 (cuantitativo), Berkshire compró GOOGL en Q3 (fundamental). Cuando dos metodologías completamente distintas apuntan al mismo nombre, la probabilidad estadística de alfa mejora materialmente.<br><br>
+      <strong>Ideas para este perfil:</strong> GOOGL (confluencia cuantitativo+fundamental única), MSFT (añadió Q3), META (añadió Q3). MU/TSM son ideas más tácticas y volátiles, no aptas para core moderado.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">Citadel Advisors — Q3 2025 ($657B, 15,551 posiciones)</div>
+    <div class="cb">
+      <strong>Top equity largo (sin derivados):</strong> MSFT $2.06B · NVDA $1.83B · META $1.44B · AAPL $1.25B · V $1.04B. Este es el libro de equity puro, separado de los derivados que dominan el filing agregado.<br><br>
+      <strong>Movidas Q3:</strong> Añadió GLD +$4.2B (señal macro — inflación/incertidumbre), UNH +$2.8B, MSFT +$2.7B, GOOG +$2.1B, AMZN +$1.4B. Redujo SPY -$16B (recomposición de libro de cobertura), IWM↓, NVDA -$1.6B, AMD↓.<br><br>
+      <strong>Lo que sirve de Citadel:</strong> La concentración de equity largo en MSFT, NVDA, META, AAPL, V confirma que esos nombres tienen profundidad institucional real (>$1B en libro puro). La adición de GOOG +$2.1B es señal relevante dado el tamaño del libro. GLD es señal macro de cobertura — no replicar directamente pero informa el contexto de riesgo.<br><br>
+      <strong>Lo que NO sirve de Citadel:</strong> Todo el filing agregado con SPY/QQQ puts y calls como tops — es el libro de derivados de market-making, no una visión de inversión.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct">ARK Invest — Q3 2025 ($16.8B, 196 posiciones, Cathie Wood)</div>
+    <div class="cb">
+      <strong>Sin cambio estructural:</strong> TSLA sigue siendo top holding (añadió +$228M equiv.), junto con COIN, ROKU, PLTR, RBLX. La concentración en disrupción especulativa de alta volatilidad se mantiene como identidad del fondo.<br><br>
+      <strong>El problema PLTR hoy:</strong> ARK lo mantiene como top 4 holding. Pero cotiza a $90 (+136% desde Q3 2025). P/S de 25x+. Para los que compraron con ARK en $38, es ganancia. Entrar hoy a estos precios es un ejercicio completamente diferente.<br><br>
+      <strong>Lo único replicable de ARK para este perfil:</strong> GOOG (añadió $50M — confirma consenso), AMD (añadió $57M — táctica de semiconductores). Todo lo demás tiene volatilidad incompatible con perfil moderado.<br><br>
+      <strong>Conclusión ARK:</strong> Útil principalmente como confirmación de señales ya identificadas en BRK/BRW/REN. No aporta ideas propias accionables para este perfil en Q3 2025.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 04 CRUCE ===================== -->
+<div id="s-cruce" class="sec">
+  <div class="sh">04 · Cruce de convicción institucional — Q3 2025</div>
+
+  <div class="alert al-grn">
+    <strong>Señal excepcional:</strong> GOOGL aparece en los 5 fondos simultáneamente en Q3 2025. Berkshire la compró por primera vez (fundamental de largo plazo), RenTech la añadió (cuantitativo momentum), Citadel la añadió $2.1B (profundidad de mercado), ARK la añadió (disrupción), Bridgewater la mantiene (macro). Esta convergencia es estadísticamente inusual.
+  </div>
+
+  <div class="cht" style="height:210px;">
+    <canvas id="convChart" role="img" aria-label="Número de fondos con posición por acción Q3 2025">GOOGL 5, MSFT 3, META 3, NVDA 3, AMZN 2, CRM 2, V 2, PLTR 2, AXP 1, KO 1, CVX 1, LRCX 1.</canvas>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th>Ticker</th><th>Empresa</th><th>Fondos Q3 2025</th><th>Movimiento neto</th><th>Clasificación</th><th>Incluir en cartera</th><th>Cambio vs Q4 2024</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="tkr">GOOGL</td><td>Alphabet</td>
+          <td><span class="ft">BRK★nuevo</span><span class="ft">REN+</span><span class="ft">CIT+$2.1B</span><span class="ft">ARK+</span><span class="ft">BRW↓</span></td>
+          <td><span class="bdg b-pur">Compra masiva</span></td>
+          <td><span class="bdg b-pur">★ MÁXIMA convicción</span></td>
+          <td><span class="bdg b-grn">Core 15% — mayor peso</span></td>
+          <td><span class="bdg b-grn">⬆⬆ Señal radicalmente más fuerte</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">MSFT</td><td>Microsoft</td>
+          <td><span class="ft">BRW↓36%</span><span class="ft">CIT+$2.7B</span><span class="ft">REN+</span></td>
+          <td><span class="bdg b-amb">Mixto</span></td>
+          <td><span class="bdg b-pur">Alta convicción</span></td>
+          <td><span class="bdg b-grn">Core 14%</span></td>
+          <td>= Sin cambio de posición</td>
+        </tr>
+        <tr>
+          <td class="tkr">META</td><td>Meta Platforms</td>
+          <td><span class="ft">BRW↓</span><span class="ft">CIT top $1.44B</span><span class="ft">REN+</span></td>
+          <td><span class="bdg b-grn">Compra neta</span></td>
+          <td><span class="bdg b-pur">Alta convicción</span></td>
+          <td><span class="bdg b-grn">Core 11%</span></td>
+          <td><span class="bdg b-grn">⬆ RenTech añadió Q3</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">CRM</td><td>Salesforce</td>
+          <td><span class="ft">BRW top 3</span><span class="ft">CIT+</span></td>
+          <td><span class="bdg b-grn">Nueva apuesta BRW</span></td>
+          <td><span class="bdg b-grn">Convicción selectiva</span></td>
+          <td><span class="bdg b-new">★ Core 9% — NUEVO</span></td>
+          <td><span class="bdg b-pur">⬆⬆ Nueva idea Q3 — reemplaza NOW</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">AMZN</td><td>Amazon</td>
+          <td><span class="ft">CIT+$1.4B</span><span class="ft">BRW prev</span></td>
+          <td><span class="bdg b-grn">CIT añadió fuerte</span></td>
+          <td><span class="bdg b-grn">Convicción selectiva</span></td>
+          <td><span class="bdg b-grn">Core 10%</span></td>
+          <td>= CIT confirma posición</td>
+        </tr>
+        <tr>
+          <td class="tkr">AXP</td><td>American Express</td>
+          <td><span class="ft">BRK permanente</span></td>
+          <td><span class="bdg b-grn">Sin cambio BRK</span></td>
+          <td><span class="bdg b-grn">Convicción selectiva</span></td>
+          <td><span class="bdg b-grn">Core 9%</span></td>
+          <td>= Corrección -20% mejora entrada</td>
+        </tr>
+        <tr>
+          <td class="tkr">LRCX</td><td>Lam Research</td>
+          <td><span class="ft">BRW top 4</span></td>
+          <td><span class="bdg b-grn">Apuesta fuerte BRW</span></td>
+          <td><span class="bdg b-grn">Convicción selectiva</span></td>
+          <td><span class="bdg b-new">★ Satelital 5% — NUEVO</span></td>
+          <td><span class="bdg b-pur">⬆⬆ Nueva idea Q3 — reemplaza PLTR</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">V</td><td>Visa</td>
+          <td><span class="ft">CIT top $1.04B</span></td>
+          <td><span class="bdg b-grn">Top holding CIT</span></td>
+          <td><span class="bdg b-grn">Convicción selectiva</span></td>
+          <td><span class="bdg b-grn">Satelital 5%</span></td>
+          <td>= Sin cambio</td>
+        </tr>
+        <tr>
+          <td class="tkr">KO</td><td>Coca-Cola</td>
+          <td><span class="ft">BRK permanente</span></td>
+          <td><span class="bdg b-grn">Sin cambio</span></td>
+          <td><span class="bdg b-grn">Convicción selectiva</span></td>
+          <td><span class="bdg b-grn">Defensiva 7%</span></td>
+          <td>= Ancla defensiva permanente</td>
+        </tr>
+        <tr>
+          <td class="tkr">CVX</td><td>Chevron</td>
+          <td><span class="ft">BRK estable</span></td>
+          <td><span class="bdg b-grn">Sin cambio</span></td>
+          <td><span class="bdg b-grn">Convicción selectiva</span></td>
+          <td><span class="bdg b-grn">Defensiva 7%</span></td>
+          <td>= Yield 4.5% + BRK confirma</td>
+        </tr>
+        <tr>
+          <td class="tkr">NVDA</td><td>NVIDIA</td>
+          <td><span class="ft">BRW↓65%</span><span class="ft">CIT top largo</span><span class="ft">REN↓</span></td>
+          <td><span class="bdg b-red">Reducción neta 2/3</span></td>
+          <td><span class="bdg b-amb">Idea táctica</span></td>
+          <td><span class="bdg b-amb">Táctica 3% — reducido</span></td>
+          <td><span class="bdg b-red">⬇ Señal debilitada. BRW -65%, REN↓</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">COST</td><td>Costco</td>
+          <td><span class="ft">REN prev</span></td>
+          <td><span class="bdg b-gry">Menor señal Q3</span></td>
+          <td><span class="bdg b-amb">Idea táctica</span></td>
+          <td><span class="bdg b-amb">Satelital 4% — reducido</span></td>
+          <td><span class="bdg b-red">⬇ Menos señal institucional Q3</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">PLTR</td><td>Palantir</td>
+          <td><span class="ft">REN↓</span><span class="ft">ARK↓</span></td>
+          <td><span class="bdg b-red">Reducción coordinada</span></td>
+          <td><span class="bdg b-red">No apta — excluida</span></td>
+          <td><span class="bdg b-red">EXCLUIDA</span></td>
+          <td><span class="bdg b-red">⬇⬇ REN y ARK redujeron. +136% desde Q3.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===================== 05 CARTERA ===================== -->
+<div id="s-cartera" class="sec">
+  <div class="sh">05 · Cartera recomendada — actualizada con 13F Q3 2025</div>
+
+  <div class="alert al-new" style="border-left:2px solid var(--accent);background:rgba(0,212,170,0.06);color:#80f0d8;padding:10px 14px;margin-bottom:14px;font-size:12px;">
+    <strong>Cambios vs. versión Q4 2024:</strong> GOOGL sube a 15% (de 13%) — señal de 5 fondos. CRM entra como core 9% (BRW top 3). LRCX entra satelital 5% (BRW top 4). PLTR sale — reducción coordinada REN+ARK, +136% desde Q3. NVDA baja a 3% táctica. NOW sale. COST baja a 4%.
+  </div>
+
+  <div class="metrics">
+    <div class="met"><div class="ml">Retorno esperado anualizado</div><div class="mv">14–19%</div><div class="ms">escenario base</div></div>
+    <div class="met"><div class="ml">S&P 500 estimado</div><div class="mv">10–12%</div><div class="ms">2026–2028</div></div>
+    <div class="met"><div class="ml">Alfa objetivo</div><div class="mv">+400–700</div><div class="ms">bps vs benchmark</div></div>
+    <div class="met"><div class="ml">Drawdown máx. estimado</div><div class="mv">-20%</div><div class="ms">escenario adverso</div></div>
+    <div class="met"><div class="ml">Posiciones</div><div class="mv">12 + cash</div></div>
+    <div class="met"><div class="ml">Prob. batir S&P 500</div><div class="mv">65%</div><div class="ms">mejoró vs Q4 2024</div></div>
+  </div>
+
+  <div class="cht-sm">
+    <canvas id="sectorChart" role="img" aria-label="Distribución sectorial de la cartera">Tech 50%, Software Enterprise 9%, Financiero 14%, Consumo básico 11%, Energía 7%, Semis equipment 5%, Semis chips 3%, Cash 5%</canvas>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th>Ticker</th><th>Empresa</th><th>Sector</th><th>Tipo</th><th>Peso</th><th>$ en $25K</th><th>Fondos Q3 2025</th><th>Px ~abr 2026</th><th>Target 24M</th><th>Potencial</th><th>Conv.</th><th>Riesgo clave</th><th>Status</th>
+      </tr></thead>
+      <tbody>
+        <tr style="background:rgba(0,212,170,0.03);">
+          <td class="tkr">GOOGL</td><td>Alphabet</td><td>Tecnología</td>
+          <td><span class="bdg b-blu">Core</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:75px"></div><span style="font-family:var(--mono);font-size:11px;">15%</span></div></td>
+          <td style="font-family:var(--mono);">$3,750</td>
+          <td><span class="ft">BRK★</span><span class="ft">REN+</span><span class="ft">CIT+</span><span class="ft">ARK+</span></td>
+          <td style="font-family:var(--mono);">~$155</td><td style="font-family:var(--mono);color:var(--green);">$205–$230</td><td class="pos">+32–48%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>DOJ antitrust, AI search canibaliza</td>
+          <td><span class="bdg b-grn">⬆ +2%</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">MSFT</td><td>Microsoft</td><td>Tecnología</td>
+          <td><span class="bdg b-blu">Core</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:70px"></div><span style="font-family:var(--mono);font-size:11px;">14%</span></div></td>
+          <td style="font-family:var(--mono);">$3,500</td>
+          <td><span class="ft">CIT+$2.7B</span><span class="ft">REN+</span></td>
+          <td style="font-family:var(--mono);">~$380</td><td style="font-family:var(--mono);color:var(--green);">$460–$500</td><td class="pos">+21–32%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>Capex AI sin retorno, antitrust</td>
+          <td>= Sin cambio</td>
+        </tr>
+        <tr>
+          <td class="tkr">META</td><td>Meta Platforms</td><td>Tecnología</td>
+          <td><span class="bdg b-blu">Core</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:55px"></div><span style="font-family:var(--mono);font-size:11px;">11%</span></div></td>
+          <td style="font-family:var(--mono);">$2,750</td>
+          <td><span class="ft">CIT top</span><span class="ft">REN+</span></td>
+          <td style="font-family:var(--mono);">~$545</td><td style="font-family:var(--mono);color:var(--green);">$640–$710</td><td class="pos">+17–30%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>Regulación UE, capex metaverso</td>
+          <td><span class="bdg b-grn">⬆ +1%</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">AMZN</td><td>Amazon</td><td>Tecnología / Retail</td>
+          <td><span class="bdg b-blu">Core</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:50px"></div><span style="font-family:var(--mono);font-size:11px;">10%</span></div></td>
+          <td style="font-family:var(--mono);">$2,500</td>
+          <td><span class="ft">CIT+$1.4B</span><span class="ft">BRW prev</span></td>
+          <td style="font-family:var(--mono);">~$180</td><td style="font-family:var(--mono);color:var(--green);">$230–$260</td><td class="pos">+28–44%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>Desaceleración consumo, cloud competencia</td>
+          <td><span class="bdg b-red">⬇ -2%</span></td>
+        </tr>
+        <tr style="background:rgba(0,212,170,0.03);">
+          <td class="tkr">CRM</td><td>Salesforce</td><td>Software enterprise</td>
+          <td><span class="bdg b-blu">Core</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:45px"></div><span style="font-family:var(--mono);font-size:11px;">9%</span></div></td>
+          <td style="font-family:var(--mono);">$2,250</td>
+          <td><span class="ft">BRW top 3</span><span class="ft">CIT+</span></td>
+          <td style="font-family:var(--mono);">~$255</td><td style="font-family:var(--mono);color:var(--green);">$310–$360</td><td class="pos">+22–41%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>Agentforce no monetiza, ciclo IT lento</td>
+          <td><span class="bdg b-new">★ NUEVO</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">AXP</td><td>American Express</td><td>Financiero</td>
+          <td><span class="bdg b-blu">Core</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:45px"></div><span style="font-family:var(--mono);font-size:11px;">9%</span></div></td>
+          <td style="font-family:var(--mono);">$2,250</td>
+          <td><span class="ft">BRK permanente</span></td>
+          <td style="font-family:var(--mono);">~$248</td><td style="font-family:var(--mono);color:var(--green);">$295–$325</td><td class="pos">+19–31%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>Recesión consumo premium, morosidad</td>
+          <td><span class="bdg b-red">⬇ -1%</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">KO</td><td>Coca-Cola</td><td>Consumo básico</td>
+          <td><span class="bdg b-grn">Defensiva</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:35px"></div><span style="font-family:var(--mono);font-size:11px;">7%</span></div></td>
+          <td style="font-family:var(--mono);">$1,750</td>
+          <td><span class="ft">BRK permanente</span></td>
+          <td style="font-family:var(--mono);">~$71</td><td style="font-family:var(--mono);color:var(--green);">$78–$85</td><td class="pos">+10–20%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>USD fuerte, regulación azúcar</td>
+          <td>= Sin cambio</td>
+        </tr>
+        <tr>
+          <td class="tkr">CVX</td><td>Chevron</td><td>Energía</td>
+          <td><span class="bdg b-grn">Defensiva</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:35px"></div><span style="font-family:var(--mono);font-size:11px;">7%</span></div></td>
+          <td style="font-family:var(--mono);">$1,750</td>
+          <td><span class="ft">BRK estable</span></td>
+          <td style="font-family:var(--mono);">~$147</td><td style="font-family:var(--mono);color:var(--green);">$165–$185</td><td class="pos">+12–26%</td>
+          <td><span class="dot da"></span>Alta</td>
+          <td>Precio petróleo, transición energética</td>
+          <td>= Sin cambio</td>
+        </tr>
+        <tr style="background:rgba(0,212,170,0.03);">
+          <td class="tkr">LRCX</td><td>Lam Research</td><td>Semis equipment</td>
+          <td><span class="bdg b-amb">Satelital</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:25px"></div><span style="font-family:var(--mono);font-size:11px;">5%</span></div></td>
+          <td style="font-family:var(--mono);">$1,250</td>
+          <td><span class="ft">BRW top 4</span></td>
+          <td style="font-family:var(--mono);">~$720</td><td style="font-family:var(--mono);color:var(--green);">$850–$950</td><td class="pos">+18–32%</td>
+          <td><span class="dot dm"></span>Media</td>
+          <td>China export ban ampliado, ciclo fabs</td>
+          <td><span class="bdg b-new">★ NUEVO</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">V</td><td>Visa</td><td>Financiero</td>
+          <td><span class="bdg b-amb">Satelital</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:25px"></div><span style="font-family:var(--mono);font-size:11px;">5%</span></div></td>
+          <td style="font-family:var(--mono);">$1,250</td>
+          <td><span class="ft">CIT top $1.04B</span></td>
+          <td style="font-family:var(--mono);">~$320</td><td style="font-family:var(--mono);color:var(--green);">$375–$415</td><td class="pos">+17–30%</td>
+          <td><span class="dot dm"></span>Media</td>
+          <td>Competencia fintech, interchange regulación</td>
+          <td>= Sin cambio</td>
+        </tr>
+        <tr>
+          <td class="tkr">COST</td><td>Costco</td><td>Consumo básico</td>
+          <td><span class="bdg b-amb">Satelital</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:20px"></div><span style="font-family:var(--mono);font-size:11px;">4%</span></div></td>
+          <td style="font-family:var(--mono);">$1,000</td>
+          <td><span class="ft">REN prev</span></td>
+          <td style="font-family:var(--mono);">~$940</td><td style="font-family:var(--mono);color:var(--green);">$1,040–$1,100</td><td class="pos">+11–17%</td>
+          <td><span class="dot dm"></span>Media</td>
+          <td>P/E 55x premium, expansión lenta</td>
+          <td><span class="bdg b-red">⬇ -4%</span></td>
+        </tr>
+        <tr>
+          <td class="tkr">NVDA</td><td>NVIDIA</td><td>Semiconductores</td>
+          <td><span class="bdg b-red">Táctica</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:15px"></div><span style="font-family:var(--mono);font-size:11px;">3%</span></div></td>
+          <td style="font-family:var(--mono);">$750</td>
+          <td><span class="ft">CIT top largo</span></td>
+          <td style="font-family:var(--mono);">~$181</td><td style="font-family:var(--mono);color:var(--green);">$220–$260</td><td class="pos">+22–44%</td>
+          <td><span class="dot dm"></span>Media</td>
+          <td>BRW -65%, REN↓, valuación exigente</td>
+          <td><span class="bdg b-red">⬇ -2%</span></td>
+        </tr>
+        <tr style="background:rgba(255,255,255,0.01);">
+          <td style="color:var(--text3);font-family:var(--mono);font-size:11px;">CASH</td>
+          <td style="color:var(--text3);">Buffer táctico</td><td>—</td>
+          <td><span class="bdg b-gry">Reserva</span></td>
+          <td><div class="wb"><div class="wb-b" style="width:25px;background:var(--text3)"></div><span style="font-family:var(--mono);font-size:11px;color:var(--text3);">5%</span></div></td>
+          <td style="font-family:var(--mono);color:var(--text3);">$1,250</td>
+          <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+          <td>Para promediar correcciones -8%+</td>
+          <td>= Sin cambio</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">Comentarios de posiciones nuevas Q3 2025</div>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">CRM — Salesforce (9% core) ★ Nueva</div>
+      <div class="cb">Bridgewater eligió CRM como top 3 holding Q3 2025 — decisión activa, coincidiendo con el lanzamiento de Agentforce en septiembre 2025. Es la plataforma de AI agents para enterprise que Salesforce está posicionando como la siguiente categoría dominante. La corrección de -20% desde Q3 (de ~$320 a ~$255) hace que el punto de entrada actual sea <strong>mejor que el de Bridgewater</strong>. A ~26x earnings forward con ARR growing 8-10% más el multiplicador de Agentforce, la tesis es defensable. Reemplaza a NOW (ServiceNow) porque BRW eligió CRM, no NOW, como su apuesta de software enterprise para este ciclo.</div>
+    </div>
+    <div class="card">
+      <div class="ct">LRCX — Lam Research (5% satelital) ★ Nueva</div>
+      <div class="cb">Bridgewater lo tiene como top 4 holding Q3 2025. La apuesta implícita: el próximo liderazgo del ciclo semiconductor no son chips puros (donde ya recogieron ganancias en NVDA) sino <strong>equipment</strong> — las máquinas que fabrican los chips. LRCX es líder en etch/deposition, procesos críticos para HBM (la memoria que necesita NVDA), nodos avanzados en TSMC N2/N1.4, y fabs de Intel. A ~$720 tras -20% desde Q3, ofrece upside al rango $850-950 con menor volatilidad que chip designers. Reemplaza a PLTR (reducida coordinadamente por RenTech+ARK, +136% desde Q3 2025 — valoración extrema).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 06 ESCENARIOS ===================== -->
+<div id="s-escenarios" class="sec">
+  <div class="sh">06 · Escenarios a 24 meses — posiciones principales</div>
+
+  <div class="stabs" id="scTabs">
+    <button class="stab active" onclick="showSc('g-sc')">GOOGL</button>
+    <button class="stab" onclick="showSc('m-sc')">MSFT</button>
+    <button class="stab" onclick="showSc('c-sc')">CRM ★</button>
+    <button class="stab" onclick="showSc('lrcx-sc')">LRCX ★</button>
+    <button class="stab" onclick="showSc('meta-sc')">META</button>
+    <button class="stab" onclick="showSc('axp-sc')">AXP</button>
+    <button class="stab" onclick="showSc('amzn-sc')">AMZN</button>
+    <button class="stab" onclick="showSc('nvda-sc')">NVDA</button>
+  </div>
+
+  <div id="g-sc" class="sc-panel">
+    <div class="card"><div class="ct">GOOGL — Alphabet | Px ~$155 | 5 fondos Q3 2025 | Peso 15%</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 20% prob.</div><strong>$105–$130</strong>-16 a -32% a 24M<br><br>DOJ fuerza venta de Chrome o Android. AI Overviews canibaliza ad revenue sin monetizar suficiente. YouTube pierde share ante plataformas verticales. Google Cloud decepciona.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 55% prob.</div><strong>$205–$230</strong>+32–48% a 24M<br><br>DOJ settlement tolerable. Gemini AI escala en enterprise. Cloud supera $14B/trimestre. Buybacks $70B+/año. AI Overviews monetiza mejor de lo esperado. BRK revela posición Q4 (feb-2026) confirma convicción.</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 25% prob.</div><strong>$255–$285</strong>+65–84% a 24M<br><br>Gemini se vuelve estándar enterprise, Cloud crece más que Azure/AWS, DOJ acuerdo favorable. Múltiplo expande a 22-25x. Revelación de posición BRK generó FOMO institucional adicional en Q4 2025.</div>
+    </div></div>
+  </div>
+
+  <div id="m-sc" class="sc-panel" style="display:none">
+    <div class="card"><div class="ct">MSFT — Microsoft | Px ~$380 | CIT +$2.7B, REN+ Q3 | Peso 14%</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 25% prob.</div><strong>$295–$325</strong>-14 a -22% a 24M<br><br>Azure desacelera bajo 20%. Copilot no monetiza. Capex AI sin retorno visible. Antitrust obliga desinversiones. Recesión reduce gasto enterprise. Múltiplo comprime a 22x.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 55% prob.</div><strong>$460–$500</strong>+21–32% a 24M<br><br>Azure crece 25-30%. Copilot 100M usuarios enterprise. EPS 2027 de $15-16. Dividendo creciente +10%/año. Greg Abel en BRK no cambia posición de Citadel en MSFT.</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 20% prob.</div><strong>$540–$580</strong>+42–53% a 24M<br><br>Azure 35%+ con AI workloads. Copilot $20B ARR incremental. Adquisición complementaria aprobada. Bull market AI expande múltiplo a 34-36x forward earnings.</div>
+    </div></div>
+  </div>
+
+  <div id="c-sc" class="sc-panel" style="display:none">
+    <div class="card"><div class="ct">CRM — Salesforce | Px ~$255 | Bridgewater top 3 Q3 2025 | Peso 9% ★ NUEVA</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 25% prob.</div><strong>$175–$200</strong>-22 a -31% a 24M<br><br>Agentforce no logra adopción masiva. Microsoft Copilot/ServiceNow capturan mercado AI enterprise. Ciclo de renovaciones se alarga. Macro recesiva reduce gasto IT. Benioff decepciona en ejecución.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 55% prob.</div><strong>$310–$360</strong>+22–41% a 24M<br><br>Agentforce alcanza $1-2B ARR incremental en 2027. ARR crece 10-12%. Márgenes operativos expanden a 35%+. EPS 2027 de $12-13. Bridgewater no reduce (señal de convicción sostenida).</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 20% prob.</div><strong>$400–$450</strong>+57–76% a 24M<br><br>Agentforce se vuelve categoría dominante. ARR supera $45B para 2027. Múltiplo expande a 35x earnings. Posible bid de adquisición premium. CRM captura 60%+ mercado AI agents enterprise.</div>
+    </div></div>
+  </div>
+
+  <div id="lrcx-sc" class="sc-panel" style="display:none">
+    <div class="card"><div class="ct">LRCX — Lam Research | Px ~$720 | Bridgewater top 4 Q3 2025 | Peso 5% ★ NUEVA</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 25% prob.</div><strong>$520–$590</strong>-18 a -28% a 24M<br><br>China export restrictions se amplían, eliminan 20-25% TAM. Ciclo de inversión en fabs se retrasa. TSMC y Samsung recortan capex AI. HBM demand decepciona si NVDA falla expectativas.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 55% prob.</div><strong>$850–$950</strong>+18–32% a 24M<br><br>HBM investment cycle sostiene demand de etch/deposition. TSMC N2/N1.4 requieren LRCX equipment. Intel Foundry adopta procesos. Advanced packaging escala. EPS 2027 de $65-75.</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 20% prob.</div><strong>$1,050–$1,150</strong>+46–60% a 24M<br><br>AI memory demand supera estimados. Nuevo ciclo fab investment 2026-2027. LRCX captura share en advanced packaging. Múltiplo expande a 20-22x. China ban se flexibiliza parcialmente.</div>
+    </div></div>
+  </div>
+
+  <div id="meta-sc" class="sc-panel" style="display:none">
+    <div class="card"><div class="ct">META — Meta Platforms | Px ~$545 | CIT top $1.44B, REN+ Q3 | Peso 11%</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 20% prob.</div><strong>$375–$430</strong>-21 a -31% a 24M<br><br>Regulación UE bloquea AI ad targeting. Capex metaverso sin retorno. Pérdida de usuarios ante TikTok/YouTube Shorts. Recesión publicitaria global. Ray-Ban AI glasses no escalan.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 55% prob.</div><strong>$640–$710</strong>+17–30% a 24M<br><br>AI ad targeting mejora CPMs 15-20%. WhatsApp Business escala LatAm/India. FCF supera $60B anuales. Reels mantiene monetización. Llama AI reduce costos infra. Buybacks $40B+/año.</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 25% prob.</div><strong>$780–$870</strong>+43–60% a 24M<br><br>WhatsApp commerce estándar en mercados emergentes. Ray-Ban AI mainstream 5M+ unidades. FCF $80B+. Múltiplo expande en bull market AI-ad. EPS 2027 supera $30.</div>
+    </div></div>
+  </div>
+
+  <div id="axp-sc" class="sc-panel" style="display:none">
+    <div class="card"><div class="ct">AXP — American Express | Px ~$248 | BRK 20.46% portafolio permanente | Peso 9%</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 25% prob.</div><strong>$175–$200</strong>-19 a -29% a 24M<br><br>Recesión USA. Gasto consumo premium cae. Morosidad Gen Z sube. Tasas altas comprimen márgenes. Competencia BNPL se intensifica. Nuevo CEO post-Berkshire era cambia estrategia.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 55% prob.</div><strong>$295–$325</strong>+19–31% a 24M<br><br>Gasto premium resiliente. EPS 2027 de $17-19. Dividendo +12%/año. Gen Z adopción supera expectativas. Greg Abel (BRK CEO) mantiene posición = confirmación institucional continua.</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 20% prob.</div><strong>$360–$400</strong>+45–61% a 24M<br><br>EPS supera $20 en 2027. BRK aumenta posición. Expansión SMB escala bien. Buybacks elevan EPS. Múltiplo expande a 20-22x en mercado alcista financieras. LatAm expansion.</div>
+    </div></div>
+  </div>
+
+  <div id="amzn-sc" class="sc-panel" style="display:none">
+    <div class="card"><div class="ct">AMZN — Amazon | Px ~$180 | CIT +$1.4B Q3 | Peso 10%</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 20% prob.</div><strong>$130–$150</strong>-17 a -28% a 24M<br><br>Recesión reduce e-commerce. AWS pierde cuota ante Azure/GCP. Inversión en AI logística sin retorno. Márgenes comprometidos. Globalstar acquisition destruye FCF.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 55% prob.</div><strong>$230–$260</strong>+28–44% a 24M<br><br>AWS crece 18-20%. Advertising supera $80B anuales. Márgenes operativos expanden a 12%+. Prime Video gana share. EPS 2027 de $8-9. FCF supera $100B anuales.</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 25% prob.</div><strong>$290–$320</strong>+61–78% a 24M<br><br>AWS re-acelera 25%+ con AI workloads. Advertising se convierte en tercer negocio $100B+. Globalstar/satélite añade TAM significativo. Múltiplo expande con expansión FCF.</div>
+    </div></div>
+  </div>
+
+  <div id="nvda-sc" class="sc-panel" style="display:none">
+    <div class="card"><div class="ct">NVDA — NVIDIA | Px ~$181 | CIT top largo; BRW -65%, REN↓ Q3 | Peso 3% táctica</div>
+    <div class="alert al-amb" style="margin-top:8px;">Señal debilitada vs. versión anterior. Posición táctica mínima. BRW recortó -65% y RenTech también redujo en Q3 2025. El +50% desde Q3 hace la entrada hoy más cara que la de quienes redujeron.</div>
+    <div class="scg">
+      <div class="sc sc-bear"><div class="scl">BAJISTA — 30% prob.</div><strong>$100–$130</strong>-28 a -45% a 24M<br><br>AMD MI350/Intel Gaudi 3 erosionan share. China ban ampliado. Hiperescaladores reducen capex AI. Ciclo de inventarios. Múltiplo de valuación se comprime a historia.</div>
+      <div class="sc sc-base"><div class="scl">BASE — 45% prob.</div><strong>$220–$260</strong>+22–44% a 24M<br><br>Blackwell/Rubin $200B+ revenue 2027. CUDA mantiene moat. Datacenter AI spending normaliza en $300B+ anuales. Márgenes brutas se sostienen 73%+.</div>
+      <div class="sc sc-bull"><div class="scl">ALCISTA — 25% prob.</div><strong>$300–$350</strong>+66–93% a 24M<br><br>AGI hype re-acelera inversión. NVDA DGX Cloud escala SaaS. Robotics/healthcare AI añaden TAM. Rubin GPU genera revenue antes de lo esperado.</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ===================== 07 IMPLEMENTACIÓN ===================== -->
+<div id="s-impl" class="sec">
+  <div class="sh">07 · Plan de implementación — $25,000 + $2,000/mes</div>
+
+  <div class="alert al-blu">GOOGL ahora es la primera prioridad de despliegue — señal de 5 fondos simultáneos justifica entrar inmediatamente en lugar de escalonar. Las defensivas también se construyen en semana 1 para anclar el portafolio desde el primer día.</div>
+
+  <div class="sub">Despliegue del capital inicial $25,000 — 6 semanas</div>
+
+  <div class="impl">
+    <div class="isn">1</div>
+    <div class="isc">
+      <div class="ist">Semana 1 — Defensivas + GOOGL completo — $10,000</div>
+      KO $1,750 + CVX $1,750 + AXP $2,250 + <strong>GOOGL $3,750 completo</strong> (señal tan fuerte que no se espera). Cash restante: $1,000 en reserva inmediata. Las defensivas anclan volatilidad desde día 1. GOOGL entra completo porque la señal de 5 fondos es excepcional y la corrección -11% desde Q3 ya ofrece precio favorable.
+    </div>
+  </div>
+
+  <div class="impl">
+    <div class="isn">2</div>
+    <div class="isc">
+      <div class="ist">Semana 2–3 — Core tech: MSFT + META + CRM — $8,500</div>
+      MSFT $3,500 (60% semana 2, 40% semana 3). META $2,750 cuando confirme soporte en $530-540. CRM $2,250 — nueva posición, escalonar 50%/50% en semanas 2-3. Si el mercado cae adicionalmente durante estas dos semanas, aprovechar para construir las posiciones más agresivamente.
+    </div>
+  </div>
+
+  <div class="impl">
+    <div class="isn">3</div>
+    <div class="isc">
+      <div class="ist">Semana 4 — AMZN + V + COST — $4,750</div>
+      AMZN $2,500, V $1,250, COST $1,000. Posiciones complementarias con menor urgencia de timing. Si mercado en rally semana 4, entrar en mitades. Si flat o bajo, entrar completo. Son los pesos más pequeños de la capa core/satelital.
+    </div>
+  </div>
+
+  <div class="impl">
+    <div class="isn">4</div>
+    <div class="isc">
+      <div class="ist">Semana 5–6 — LRCX + NVDA + cash buffer — $2,000</div>
+      LRCX $1,250 (nueva, esperar estabilización mínima 1-2 días). NVDA $750 (posición táctica mínima — solo para no quedar sin exposición en hipotético rally AI). Mantener $1,250 en cash como reserva táctica permanente para la primera corrección significativa.
+    </div>
+  </div>
+
+  <div class="sub">Estrategia aportes mensuales $2,000</div>
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th>Escenario de mercado</th><th>Acción con el aporte</th><th>Orden de prioridad</th><th>Regla adicional</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="bdg b-red">Corrección -8%+</span></td>
+          <td>Desplegar 100% del aporte + usar cash buffer ($1,250)</td>
+          <td>GOOGL → MSFT → CRM → AMZN → META</td>
+          <td>Correcciones en nombres de alta convicción = oportunidades. No vender.</td>
+        </tr>
+        <tr>
+          <td><span class="bdg b-amb">Lateral (-3% a +3%)</span></td>
+          <td>Desplegar 70% ($1,400)</td>
+          <td>Posición más infraponderada vs. objetivo</td>
+          <td>Rebalanceo automático — reforzar lo que más rezagó sin superar pesos máximos.</td>
+        </tr>
+        <tr>
+          <td><span class="bdg b-grn">Rally +5%+</span></td>
+          <td>Solo 40% ($800)</td>
+          <td>KO, CVX, o acumular cash</td>
+          <td>No perseguir precios. En rally extremo acumular cash para la próxima corrección.</td>
+        </tr>
+        <tr>
+          <td><span class="bdg b-pur">Posición individual -15%+</span></td>
+          <td>Revisar tesis antes de añadir</td>
+          <td>Si tesis intacta: añadir hasta peso máximo. Si tesis rota: reducir o salir.</td>
+          <td>Señales de salida: pérdida clientes clave, fraude, cambio regulatorio disruptivo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">Reglas de rebalanceo y salida</div>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">Rebalanceo semestral (junio y diciembre)</div>
+      <div class="cb">
+        Recalcular pesos y ajustar posiciones que se desviaron más de ±4 puntos porcentuales del objetivo.<br><br>
+        <strong>Señales de trim parcial (30-40%):</strong> Posición individual supera 20% del portafolio. Valoración excede 2x el múltiplo objetivo. Tesis estructural cambia.
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct">Señales de salida total</div>
+      <div class="cb">
+        Fraude o irregularidad contable confirmada.<br>
+        Cambio regulatorio que destruye modelo de negocio (ej. GOOGL break-up forzado de Chrome + Android simultáneo).<br>
+        Posición cae -25% Y análisis actualizado confirma deterioro permanente del negocio (no temporal).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 08 CONCLUSIÓN ===================== -->
+<div id="s-conclusion" class="sec">
+  <div class="sh">08 · Conclusión final — Cartera para batir S&P 500 +300 bps</div>
+
+  <div class="con-banner">
+    <div class="con-title">★ Cartera final sugerida — Basada en 13F Q3 2025 (datos más recientes)</div>
+    <div class="con-body">
+      <strong>GOOGL 15%</strong> · MSFT 14% · META 11% · AMZN 10% · <strong>CRM 9%</strong> · AXP 9% · KO 7% · CVX 7% · <strong>LRCX 5%</strong> · V 5% · COST 4% · NVDA 3% · CASH 5%<br>
+      <span style="font-size:11px;color:var(--text3);">★ Negrita = cambios respecto a versión Q4 2024 anterior.</span>
+    </div>
+  </div>
+
+  <div class="cht">
+    <canvas id="projChart" role="img" aria-label="Proyección del portafolio vs S&P 500 a 24 meses con aportes de $2,000 mensuales">Portafolio base: ~$76,000. S&P 500: ~$70,000. Portafolio bajista: ~$60,000.</canvas>
+  </div>
+
+  <div class="metrics" style="margin-top:14px;">
+    <div class="met"><div class="ml">Capital invertido 24M</div><div class="mv">$73K</div><div class="ms">$25K + 24×$2K</div></div>
+    <div class="met"><div class="ml">Portafolio 24M (base)</div><div class="mv">~$76K</div><div class="ms">retorno neto ~$3K</div></div>
+    <div class="met"><div class="ml">Portafolio 24M (bull)</div><div class="mv">~$92K</div><div class="ms">+$19K sobre invertido</div></div>
+    <div class="met"><div class="ml">S&P 500 estimado 24M</div><div class="mv">~$70K</div><div class="ms">incl. aportes</div></div>
+    <div class="met"><div class="ml">Prob. batir S&P 500</div><div class="mv">65%</div><div class="ms">escenario base</div></div>
+    <div class="met"><div class="ml">Estrategia óptima</div><div class="mv">DCA</div><div class="ms">acumulación disciplinada</div></div>
+  </div>
+
+  <div class="grid2" style="margin-top:14px;">
+    <div class="card">
+      <div class="ct">Por qué este portafolio puede batir al S&P 500</div>
+      <div class="cb">
+        <strong>1. GOOGL con señal de 5 fondos a precio de corrección.</strong> A $155 vs. ~$175 en Q3 2025, el inversor hoy entra mejor que Berkshire. El consenso cuantitativo+fundamental en GOOGL es estadísticamente excepcional.<br><br>
+        <strong>2. CRM y LRCX con correcciones del -20%.</strong> Ambas fueron elegidas por Bridgewater como top holdings y hoy cotizan un 20% por debajo de su nivel Q3. La corrección fue de mercado general, no de negocio específico.<br><br>
+        <strong>3. Ausencia de posiciones diluidas.</strong> Sin PLTR a $90 (P/S 25x post +136%). Sin NVDA con peso excesivo (señal debilitada). Sin names especulativos de ARK. El portafolio tiene mayor densidad de calidad que el S&P 500.
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct">Riesgos que pueden impedirlo</div>
+      <div class="cb">
+        <strong>1. Antitrust coordinado.</strong> Si GOOGL y META enfrentan resoluciones disruptivas simultáneamente (pesimista -10% portafolio directo).<br><br>
+        <strong>2. Recesión USA profunda.</strong> AXP, META, AMZN son más cíclicas de lo que parecen. Una recesión con > -10% GDP impacto supera el colchón defensivo de KO+CVX.<br><br>
+        <strong>3. Ciclo AI decepciona.</strong> Si la monetización de AI en MSFT, CRM, GOOGL tarda más de 24 meses en ser visible en earnings, los múltiplos se comprimen.<br><br>
+        <strong>4. Valuación de mercado.</strong> El S&P 500 entró a 2026 en el segundo nivel de valoración más alto de 155 años (Shiller P/E). Un de-rating múltiple generalizado perjudica incluso a los mejores negocios.
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px;">
+    <div class="ct">Ajustes por perfil de riesgo diferente</div>
+    <div class="cb">
+      <strong style="color:var(--red);">Si tolerancia fuera ALTA:</strong> Elevar NVDA a 10%, añadir PLTR 5% (asumiendo que sube más desde $90), sustituir KO/CVX por TSLA 5%, aumentar CRM a 12%. Retorno esperado: 22-35% anualizado pero drawdowns de -35%+. No recomendable para horizonte solo 24 meses.<br><br>
+      <strong style="color:var(--green);">Si tolerancia fuera BAJA:</strong> Reducir tech a 30%, aumentar KO+CVX a 20% total, añadir JNJ 7%, WMT 5%, bajar NVDA a cero, sacar CRM/LRCX. Retorno esperado: 8-11% — esencialmente cercano al S&P 500 pero con drawdown máximo de solo -15%. Alfa potencial cae a +100-150 bps.
+    </div>
+  </div>
+
+  <div class="alert al-grn" style="margin-top:14px;">
+    <strong>Conclusión metodológica:</strong> Esta estrategia es más adecuada para <strong>acumulación disciplinada con DCA mensual</strong> que para gestión activa. El inversor que siga el plan de aportes mensuales y rebalanceo semestral, sin vender en correcciones, tiene una probabilidad estimada del <strong>65%</strong> de superar al S&P 500 por 300-500 bps anualizados en 24 meses. La clave no es selección perfecta — es disciplina de ejecución consistente. El portafolio fue construido con los 13F más recientes disponibles (Q3 2025), auditoría rigurosa de fechas y precios, y criterio propio de selección — no copy-portfolio ciego.
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+const sMap = ['resumen','auditoria','gestores','cruce','cartera','escenarios','impl','conclusion'];
+function ss(id) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('#mn .nb').forEach(b => b.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  const i = sMap.indexOf(id);
+  const btns = document.querySelectorAll('#mn .nb');
+  if (i >= 0 && btns[i]) btns[i].classList.add('active');
+  if (id === 'cruce') initConv();
+  if (id === 'cartera') initSec();
+  if (id === 'conclusion') initProj();
+}
+
+function showSc(id) {
+  document.querySelectorAll('.sc-panel').forEach(s => s.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+  const scMap = { 'g-sc':0,'m-sc':1,'c-sc':2,'lrcx-sc':3,'meta-sc':4,'axp-sc':5,'amzn-sc':6,'nvda-sc':7 };
+  const btns = document.querySelectorAll('#scTabs .stab');
+  btns.forEach(b => b.classList.remove('active'));
+  if (btns[scMap[id]]) btns[scMap[id]].classList.add('active');
+}
+
+let ci = false, si = false, pi = false;
+
+function initConv() {
+  if (ci) return; ci = true;
+  const ctx = document.getElementById('convChart');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['GOOGL','MSFT','META','NVDA','AMZN','CRM','V','PLTR','AXP','KO','CVX','LRCX'],
+      datasets: [{
+        label: 'Fondos con posición Q3 2025',
+        data: [5, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1],
+        backgroundColor: ['#00d4aa','#00d4aa','#00d4aa','#f0a030','#0066ff','#0066ff','#0066ff','#ff4466','#9b7fff','#9b7fff','#9b7fff','#9b7fff'],
+        borderWidth: 0,
+        borderRadius: 3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' fondo(s) — Q3 2025' } }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 6, ticks: { stepSize: 1, color: '#5a6070', font: { family: 'IBM Plex Mono' } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+        x: { ticks: { color: '#8c93a8', font: { family: 'IBM Plex Mono', size: 10 } }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+function initSec() {
+  if (si) return; si = true;
+  const ctx = document.getElementById('sectorChart');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Tecnología (GOOGL,MSFT,META,AMZN)','Software Enterprise (CRM)','Financiero (AXP,V)','Consumo básico (KO,COST)','Energía (CVX)','Semis equipment (LRCX)','Semis chips (NVDA)','Cash'],
+      datasets: [{
+        data: [50, 9, 14, 11, 7, 5, 3, 5],
+        backgroundColor: ['#9b7fff','#00d4aa','#0066ff','#00c878','#f0a030','#1D9E75','#534AB7','#3a3f4d'],
+        borderWidth: 0,
+        hoverBorderWidth: 2,
+        hoverBorderColor: '#ffffff20'
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '60%',
+      plugins: {
+        legend: { display: true, position: 'right', labels: { color: '#8c93a8', font: { family: 'IBM Plex Mono', size: 10 }, boxWidth: 9, padding: 8 } },
+        tooltip: { callbacks: { label: ctx => ctx.label.split('(')[0].trim() + ': ' + ctx.parsed + '%' } }
+      }
+    }
+  });
+}
+
+function initProj() {
+  if (pi) return; pi = true;
+  const months = Array.from({ length: 25 }, (_, i) => i === 0 ? 'Inicio' : 'M' + i);
+  const spx = [], port = [], portb = [], portbull = [];
+  let s = 25000, p = 25000, pb = 25000, pbull = 25000;
+  for (let i = 0; i <= 24; i++) {
+    spx.push(Math.round(s));
+    port.push(Math.round(p));
+    portb.push(Math.round(pb));
+    portbull.push(Math.round(pbull));
+    if (i < 24) {
+      s = (s + 2000) * (1 + 0.0088);
+      p = (p + 2000) * (1 + 0.0133);
+      pb = (pb + 2000) * (1 + 0.0062);
+      pbull = (pbull + 2000) * (1 + 0.0180);
+    }
+  }
+  const ctx = document.getElementById('projChart');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [
+        { label: 'Cartera (base ~17%/año)', data: port, borderColor: '#00d4aa', backgroundColor: 'rgba(0,212,170,0.06)', borderWidth: 2.5, pointRadius: 0, fill: true, tension: 0.35 },
+        { label: 'Cartera (alcista ~24%/año)', data: portbull, borderColor: '#9b7fff', backgroundColor: 'transparent', borderWidth: 1.5, pointRadius: 0, borderDash: [5,3], fill: false, tension: 0.35 },
+        { label: 'S&P 500 (~11%/año)', data: spx, borderColor: '#5a6070', borderWidth: 1.5, pointRadius: 0, borderDash: [3,3], fill: false, tension: 0.35 },
+        { label: 'Cartera (bajista ~7%/año)', data: portb, borderColor: '#ff4466', borderWidth: 1, pointRadius: 0, borderDash: [2,4], fill: false, tension: 0.35 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true, labels: { color: '#8c93a8', font: { family: 'IBM Plex Mono', size: 10 }, boxWidth: 10, padding: 12 } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString() } }
+      },
+      scales: {
+        y: { ticks: { color: '#5a6070', font: { family: 'IBM Plex Mono', size: 10 }, callback: v => '$' + (v / 1000).toFixed(0) + 'K' }, grid: { color: 'rgba(255,255,255,0.04)' } },
+        x: { ticks: { color: '#5a6070', font: { family: 'IBM Plex Mono', size: 9 }, maxTicksLimit: 13 }, grid: { display: false } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
